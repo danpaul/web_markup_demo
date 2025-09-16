@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selector Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CSS Selector Playground</h1>
+      <p>
+        Explore how different selectors target elements. Hover, focus, and
+        interact!
+      </p>
+      <nav>
+        <a href="#basics">Basics</a>
+        <a href="#combinators">Combinators</a>
+        <a href="#attributes">Attributes</a>
+        <a href="#pseudo-classes">Pseudo-classes</a>
+        <a href="#nth">Nth & structural</a>
+        <a href="#pseudo-elements">Pseudo-elements</a>
+        <a href="#advanced">Modern</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="basics" class="card">
+        <h2>Type, Class, ID, Universal</h2>
+        <p>Paragraph targeted by <code>p</code> (type selector).</p>
+        <p class="note">
+          Paragraph targeted by <code>.note</code> (class selector).
+        </p>
+        <p id="unique">
+          Paragraph targeted by <code>#unique</code> (ID selector).
+        </p>
+        <div class="box" data-kind="universal">
+          This box also matches <code>*</code> (universal).
+        </div>
+      </section>
+
+      <section id="combinators" class="card">
+        <h2>Combinators</h2>
+        <div class="container">
+          <p>Inside container: descendant selector <code>.container p</code></p>
+          <div class="child">
+            <span>Direct child: <code>.container > .child</code></span>
+          </div>
+          <p class="sibling-a">Sibling A</p>
+          <p class="sibling-b">
+            Sibling B (adjacent: <code>+ .sibling-b</code>)
+          </p>
+          <p class="sibling-c">
+            Sibling C (general: <code>~ .sibling-c</code>)
+          </p>
+        </div>
+      </section>
+
+      <section id="attributes" class="card">
+        <h2>Attribute selectors</h2>
+        <div class="links">
+          <a href="https://example.com" target="_blank"
+            >External (has [target])</a
+          >
+          <a href="/about">Internal</a>
+          <a href="mailto:hello@example.com">Email (href^="mailto:")</a>
+          <a href="/files/report.pdf">PDF (href$=".pdf")</a>
+          <a href="/tags/css-selectors">Tags (href*="select")</a>
+        </div>
+        <form class="attr-form">
+          <input type="text" placeholder="[type="text"]" /> <input type="email"
+          placeholder="[type="email"]" /> <input type="search"
+          placeholder="[type~="search"] via attribute presence" /> <input
+          type="text" data-role="primary field"
+          placeholder="[data-role~="primary"]" />
+        </form>
+      </section>
+
+      <section id="pseudo-classes" class="card">
+        <h2>Pseudo-classes</h2>
+        <ul class="state-list">
+          <li><a href="#pseudo-classes">Visited/Link</a></li>
+          <li>
+            <a href="https://example.com" target="_blank">External Hover</a>
+          </li>
+          <li><button type="button">Focus me</button></li>
+          <li>
+            <input type="checkbox" id="agree" /><label for="agree"
+              >:checked</label
+            >
+          </li>
+          <li class="enabled-item">
+            <button>Enabled</button><button disabled>Disabled</button>
+          </li>
+        </ul>
+      </section>
+
+      <section id="nth" class="card">
+        <h2>:nth-child and structural</h2>
+        <ol class="zebra">
+          <li>Row 1</li>
+          <li>Row 2</li>
+          <li>Row 3</li>
+          <li>Row 4</li>
+          <li>Row 5</li>
+          <li>Row 6</li>
+        </ol>
+        <div class="structure">
+          <p>First paragraph (:first-child)</p>
+          <p>Middle paragraph</p>
+          <p>Last paragraph (:last-child)</p>
+          <p class="only">Only-child demo will show when it stands alone.</p>
+        </div>
+      </section>
+
+      <section id="pseudo-elements" class="card">
+        <h2>Pseudo-elements</h2>
+        <p class="fancy-before">Before pseudo-element adds a label.</p>
+        <p class="fancy-after">After pseudo-element adds a flourish.</p>
+        <p class="highlight-first-line">Resize window to see ::first-line.</p>
+        <p class="highlight-first-letter">Observe the ::first-letter.</p>
+      </section>
+
+      <section id="advanced" class="card">
+        <h2>Modern selectors: :not, :is, :where, :has</h2>
+        <div class="tags">
+          <button class="tag">All</button>
+          <button class="tag primary">Primary</button>
+          <button class="tag danger">Danger</button>
+          <button class="tag" data-active>Active via [data-active]</button>
+        </div>
+        <div class="gallery" id="gallery">
+          <figure class="tile">
+            <img src="https://picsum.photos/seed/1/120/80" alt="random" />
+            <figcaption>Tile 1</figcaption>
+          </figure>
+          <figure class="tile featured">
+            <img src="https://picsum.photos/seed/2/120/80" alt="random" />
+            <figcaption>Tile 2 (featured)</figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://picsum.photos/seed/3/120/80" alt="random" />
+            <figcaption>Tile 3</figcaption>
+          </figure>
+        </div>
+        <p class="negation-demo">
+          This paragraph matches <code>:not(.exclude)</code>.
+        </p>
+        <p class="negation-demo exclude">
+          This one is excluded by <code>:not(.exclude)</code>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <small>Play with the DOM in devtools to see selector effects.</small>
+    </footer>
+  </body>
+</html>

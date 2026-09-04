@@ -1,14 +1,393 @@
-<!-- add all items from grading group 1 and 2. Search for items in group 5 that refer to css f.e. author attribute value-->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Markup Starter</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>HTML Images</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <p>Hello web markup!</p>
-    <img src="img/banana-dance.gif" alt="banana dance" />
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <p class="eyebrow">Web Markup Demo</p>
+      <h1>HTML Images</h1>
+      <p class="lede">
+        Notes on putting pictures on a web page: the
+        <code>&lt;img&gt;</code> element, file formats, and accessibility.
+      </p>
+      <nav aria-label="On this page">
+        <a href="#img-element">The img element</a>
+        <a href="#formats">Formats</a>
+        <a href="#accessibility">Accessibility</a>
+        <a href="#checklist">Checklist</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="img-element" aria-labelledby="img-element-heading">
+        <h2 id="img-element-heading">1. The <code>&lt;img&gt;</code> element</h2>
+        <p>
+          Images are not drawn in HTML. You <strong>point to a file</strong> with
+          <code>src</code>, and you describe that file with <code>alt</code>.
+          In this demo every picture lives in the <code>img/</code> folder.
+        </p>
+        <pre><code>&lt;img
+  src="img/campus-photo.jpg"
+  alt="Three students with backpacks walking down a campus path between red brick buildings."
+  width="1280"
+  height="720"
+/&gt;</code></pre>
+        <ul>
+          <li>
+            <code>src</code> — the path to the file. Use a folder such as
+            <code>img/</code> so HTML and pictures stay organized.
+          </li>
+          <li>
+            <code>alt</code> — the text equivalent. Screen readers read this.
+            If the image fails to load, browsers show this text instead.
+          </li>
+          <li>
+            <code>width</code> and <code>height</code> — the real pixel size of
+            the file. The browser can reserve space before the file arrives,
+            which stops the page from jumping.
+          </li>
+        </ul>
+        <p>
+          CSS then scales the image to fit the layout
+          (<code>max-width: 100%</code> and <code>height: auto</code>). You still
+          write the real width and height in HTML.
+        </p>
+      </section>
+
+      <section id="formats" aria-labelledby="formats-heading">
+        <h2 id="formats-heading">2. Image formats</h2>
+        <p>
+          The file extension tells the browser how to decode the picture.
+          Choose the format that matches the kind of image.
+        </p>
+
+        <div class="format-grid">
+          <article class="format-card">
+            <h3>GIF — animation</h3>
+            <p>
+              GIF is an older format with a small colour palette. Use it for
+              simple animations. Prefer PNG or WebP for still graphics.
+            </p>
+            <figure>
+              <img
+                src="img/banana-dance.gif"
+                alt="Cartoon yellow banana with eyes and a grin, dancing side to side while shaking white pom-poms."
+                width="200"
+                height="200"
+              />
+              <figcaption>
+                <code>img/banana-dance.gif</code> — a short looping animation.
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="format-card">
+            <h3>PNG — sharp graphics and transparency</h3>
+            <p>
+              PNG is lossless. Edges stay sharp, so it suits logos, icons, and
+              screenshots. It can also leave pixels fully see-through.
+            </p>
+            <figure class="transparency-demo">
+              <img
+                src="img/it-logo.png"
+                alt="Blue computer monitor icon with a yellow light bulb on the screen."
+                width="1024"
+                height="1024"
+              />
+              <figcaption>
+                <code>img/it-logo.png</code> — the chequerboard shows the
+                transparent background.
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="format-card">
+            <h3>JPG — photographs</h3>
+            <p>
+              JPG (JPEG) uses lossy compression. It is the usual choice for
+              photos: many colours, gradients, and no need for transparency.
+            </p>
+            <figure>
+              <img
+                src="img/campus-photo.jpg"
+                alt="Three students with backpacks walking down a sunny campus path between red brick buildings under a blue sky."
+                width="1280"
+                height="720"
+              />
+              <figcaption>
+                <code>img/campus-photo.jpg</code> — a photograph compresses well
+                as JPG.
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="format-card">
+            <h3>WebP — modern and smaller</h3>
+            <p>
+              WebP is a newer format. It can be lossy or lossless, can include
+              transparency, and is often smaller than JPG or PNG at similar
+              quality. Current browsers support it.
+            </p>
+            <figure>
+              <img
+                src="img/browser-illustration.webp"
+                alt="Illustrated web browser on a desk, showing a mountain lake photo above three coloured feature cards."
+                width="1152"
+                height="864"
+                loading="lazy"
+              />
+              <figcaption>
+                <code>img/browser-illustration.webp</code> — the same kind of
+                picture, in a smaller modern file.
+              </figcaption>
+            </figure>
+          </article>
+        </div>
+
+        <h3>When to pick which format</h3>
+        <table>
+          <caption>
+            Quick guide to GIF, PNG, JPG, and WebP
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Format</th>
+              <th scope="col">Best for</th>
+              <th scope="col">Transparency</th>
+              <th scope="col">Animation</th>
+              <th scope="col">Compression</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">GIF</th>
+              <td>Simple looping animations</td>
+              <td>Yes (1-bit)</td>
+              <td>Yes</td>
+              <td>Limited colours (256)</td>
+            </tr>
+            <tr>
+              <th scope="row">PNG</th>
+              <td>Logos, icons, screenshots</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Lossless</td>
+            </tr>
+            <tr>
+              <th scope="row">JPG</th>
+              <td>Photographs</td>
+              <td>No</td>
+              <td>No</td>
+              <td>Lossy</td>
+            </tr>
+            <tr>
+              <th scope="row">WebP</th>
+              <td>Photos or graphics on the modern web</td>
+              <td>Yes</td>
+              <td>Yes</td>
+              <td>Lossy or lossless</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="accessibility" aria-labelledby="accessibility-heading">
+        <h2 id="accessibility-heading">3. Accessibility guidelines</h2>
+        <p>
+          WCAG success criterion
+          <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+            >1.1.1 Non-text Content</a>
+          says every image needs a text alternative. The <code>alt</code>
+          attribute is how HTML does that. Write <code>alt</code> for the
+          <strong>purpose</strong> of the image, not a dump of every visual
+          detail.
+        </p>
+
+        <h3>Informative images need a real description</h3>
+        <p>
+          If the picture teaches, identifies, or adds meaning, describe that
+          meaning. Do not start with “image of” or “picture of”: the screen
+          reader already announces that it is an image.
+        </p>
+        <div class="compare">
+          <div class="compare-bad">
+            <h4>Avoid</h4>
+            <pre><code>alt="image of banana.gif"
+alt="picture of a campus"</code></pre>
+          </div>
+          <div class="compare-good">
+            <h4>Prefer</h4>
+            <pre><code>alt="Cartoon yellow banana dancing with pom-poms."
+alt="Three students walking down a campus path between brick buildings."</code></pre>
+          </div>
+        </div>
+
+        <h3>Decorative images use empty <code>alt</code></h3>
+        <p>
+          If the image is only decoration and adds no information, use
+          <code>alt=""</code>. Leave the attribute in. A missing
+          <code>alt</code> is an error; an empty <code>alt</code> tells
+          assistive technology to skip the image.
+        </p>
+        <p class="decorative-row">
+          <img
+            src="img/decorative-dots.png"
+            alt=""
+            width="120"
+            height="24"
+          />
+          Course notes — Web Markup
+          <img
+            src="img/decorative-dots.png"
+            alt=""
+            width="120"
+            height="24"
+          />
+        </p>
+        <pre><code>&lt;img src="img/decorative-dots.png" alt="" width="120" height="24" /&gt;</code></pre>
+
+        <h3><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code></h3>
+        <p>
+          A visible caption is extra context for everyone. It does
+          <strong>not</strong> replace <code>alt</code>. Screen reader users
+          still need the alternative text, and sighted users still need the
+          caption under the picture.
+        </p>
+        <figure class="featured-figure">
+          <img
+            src="img/campus-photo.jpg"
+            alt="Three students with backpacks walking down a campus path between red brick buildings."
+            width="1280"
+            height="720"
+            loading="lazy"
+          />
+          <figcaption>
+            Figure 1. Photographs belong in <code>jpg</code> (or
+            <code>webp</code>). The caption names the example; the
+            <code>alt</code> text describes what is in the photo.
+          </figcaption>
+        </figure>
+
+        <h3>Linked images describe the destination</h3>
+        <p>
+          When an image is the only content inside a link, the
+          <code>alt</code> text is the link name. Describe where the link goes,
+          not the drawing of the icon.
+        </p>
+        <p>
+          <a class="icon-link" href="#checklist">
+            <img
+              src="img/it-logo.png"
+              alt="Go to the accessibility checklist"
+              width="1024"
+              height="1024"
+            />
+          </a>
+        </p>
+        <pre><code>&lt;a href="#checklist"&gt;
+  &lt;img src="img/it-logo.png" alt="Go to the accessibility checklist" /&gt;
+&lt;/a&gt;</code></pre>
+
+        <h3>Complex images need a short alt plus nearby text</h3>
+        <p>
+          Charts and diagrams cannot fit all of their data into a short
+          <code>alt</code>. Give a one-sentence summary in
+          <code>alt</code>, and put the full meaning in the page next to the
+          image. <code>aria-describedby</code> points assistive technology at
+          that longer text.
+        </p>
+        <figure class="featured-figure">
+          <img
+            src="img/enrollment-chart.png"
+            alt="Bar chart of course enrollment: Year 1 shortest, Year 2 medium, Year 3 tallest."
+            width="1152"
+            height="864"
+            loading="lazy"
+            aria-describedby="chart-description"
+          />
+          <figcaption>
+            Figure 2. A chart is a complex image. The picture is
+            <code>img/enrollment-chart.png</code>.
+          </figcaption>
+        </figure>
+        <p id="chart-description">
+          Enrollment grows each year. Year 1 is the shortest bar, Year 2 is
+          about twice as tall, and Year 3 is the tallest — a little over three
+          times Year 1. Colour is extra decoration; the heights already carry
+          the meaning, so the information does not rely on colour alone.
+        </p>
+
+        <h3>Do not rely on images of text</h3>
+        <p>
+          If the words matter, put them in HTML. Pictures of text cannot be
+          resized cleanly, cannot be translated, and are easy to miss in
+          <code>alt</code>. Logos are a common exception; then the
+          <code>alt</code> should contain the same words as the logo.
+        </p>
+
+        <h3>Common mistakes</h3>
+        <ul class="mistakes">
+          <li>
+            <strong>No <code>alt</code> attribute.</strong> Screen readers may
+            read the file name instead. Always include <code>alt</code>, even
+            when it is empty.
+          </li>
+          <li>
+            <strong>File name as alt.</strong>
+            <code>alt="campus-photo.jpg"</code> is not a description.
+          </li>
+          <li>
+            <strong>Repeating “image of”.</strong> Assistive technology already
+            says it is an image.
+          </li>
+          <li>
+            <strong>Alt that copies the caption word for word.</strong> Give
+            each one a job: <code>alt</code> replaces the picture;
+            <code>figcaption</code> comments on it.
+          </li>
+          <li>
+            <strong>Information only in the picture.</strong> If a user cannot
+            see the image, they must still get the same information from text.
+          </li>
+        </ul>
+      </section>
+
+      <section id="checklist" aria-labelledby="checklist-heading">
+        <h2 id="checklist-heading">4. Checklist</h2>
+        <ol>
+          <li>Keep every image file in <code>img/</code>.</li>
+          <li>
+            Pick <strong>GIF</strong> for simple animation,
+            <strong>PNG</strong> for logos and transparency,
+            <strong>JPG</strong> for photos, <strong>WebP</strong> when you want
+            a smaller modern file.
+          </li>
+          <li>Every <code>&lt;img&gt;</code> has an <code>alt</code> attribute.</li>
+          <li>Informative images get a short, useful description.</li>
+          <li>Decorative images get <code>alt=""</code>.</li>
+          <li>
+            Linked images describe the destination, not the artwork.
+          </li>
+          <li>
+            Charts get a short <code>alt</code> plus a text explanation on the
+            page.
+          </li>
+          <li>
+            Set <code>width</code> and <code>height</code> to the real pixel
+            size of the file.
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>HTML Images demo. All pictures are in <code>img/</code>.</p>
+    </footer>
   </body>
 </html>

@@ -1,8 +1,426 @@
-/* add all items from grading group 3 and 4. Search for items in group 5 that refer to css f.e. z index */
-body {
-  background-color: yellow;
+html {
+  --text: #1c1917;
+  --bg: #fffdf7;
+  --muted: #57534e;
+  --surface: #fffbeb;
+  --accent: #fef3c7;
+  --accent-strong: #ca8a04;
+  --border: #e7d5a3;
+  --link: #9a3412;
+  --link-hover: #7c2d12;
+  --focus: #854d0e;
+  --button-bg: #facc15;
+  --button-text: #1c1917;
+  --code-bg: #f5f0e1;
+  --mark: #fde68a;
+
+  color: var(--text);
+  background-color: var(--bg);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
-p {
-  color: magenta;
+body {
+  box-sizing: border-box;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+header,
+main,
+footer,
+aside,
+article,
+section,
+figure,
+form,
+fieldset,
+dialog,
+details,
+blockquote,
+pre,
+table,
+search {
+  box-sizing: border-box;
+}
+
+header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 3px solid var(--accent-strong);
+}
+
+hgroup {
+  margin: 0 0 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 1.75rem 0 0.6rem;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1.05rem;
+}
+
+hgroup p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-weight: 600;
+}
+
+search p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  margin: 0;
+}
+
+search label {
+  flex: 1 1 100%;
+  margin: 0;
+}
+
+search input {
+  flex: 1 1 12rem;
+  width: auto;
+  min-width: 0;
+}
+
+search button {
+  flex: 0 0 auto;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible,
+input:focus,
+input:focus-visible,
+select:focus,
+select:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+summary:focus,
+summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+p,
+ul,
+ol,
+dl,
+menu {
+  margin: 0 0 1rem;
+}
+
+ul,
+ol,
+menu {
+  padding-left: 1.25rem;
+}
+
+li {
+  margin: 0.25rem 0;
+}
+
+dt {
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+dd {
+  margin: 0.2rem 0 0 1rem;
+}
+
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--accent-strong);
+  background-color: var(--surface);
+}
+
+blockquote p {
+  margin: 0.4rem 0;
+}
+
+figure {
+  margin: 1.25rem 0;
+}
+
+figcaption {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+img,
+video,
+audio,
+iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+audio,
+video {
+  margin: 0 0 1rem;
+}
+
+hr {
+  margin: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+pre,
+code,
+kbd,
+samp,
+var {
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+}
+
+code,
+samp,
+kbd {
+  padding: 0.1em 0.35em;
+  background-color: var(--code-bg);
+  border-radius: 0.2rem;
+}
+
+kbd {
+  border: 1px solid var(--border);
+}
+
+mark {
+  background-color: var(--mark);
+  color: var(--text);
+  padding: 0.05em 0.2em;
+}
+
+small {
+  color: var(--muted);
+}
+
+address {
+  font-style: normal;
+  margin: 0 0 0.75rem;
+}
+
+table {
+  width: 100%;
+  margin: 0 0 1.25rem;
+  border-collapse: collapse;
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+th,
+td {
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid var(--border);
+}
+
+thead {
+  background-color: var(--accent);
+}
+
+tfoot {
+  background-color: var(--surface);
+  font-weight: 600;
+}
+
+form p {
+  margin: 0 0 0.9rem;
+}
+
+fieldset {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem 0.25rem;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+legend {
+  font-weight: 700;
+  padding: 0 0.35rem;
+}
+
+label {
+  display: block;
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+select,
+button {
+  box-sizing: border-box;
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5rem 0.65rem;
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+}
+
+textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+button {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  color: var(--button-text);
+  background-color: var(--button-bg);
+  border: 2px solid var(--focus);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--accent-strong);
+}
+
+menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+output,
+progress,
+meter {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+progress,
+meter {
+  width: 100%;
+  max-width: 16rem;
+  height: 1rem;
+}
+
+dialog {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0 0 1.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  background-color: var(--accent);
+}
+
+dialog p {
+  margin: 0;
+}
+
+details {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+aside {
+  margin: 2rem 0;
+  padding: 0.85rem 1rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+}
+
+footer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
 }

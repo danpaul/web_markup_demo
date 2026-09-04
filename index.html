@@ -1,31 +1,382 @@
-<!-- add all items from grading group 1 and 2. Search for items in group 5 that refer to css f.e. author attribute value-->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Markup Starter</title>
+    <title>
+      The Incredible Dancing Banana — Saturday Night at the Peel Palace
+    </title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <header>
-      <h1>The incredible dancing banana</h1>
+      <hgroup>
+        <h1>The Incredible Dancing Banana</h1>
+        <p>Saturday night at the Peel Palace</p>
+      </hgroup>
       <nav>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#recap">Last Saturday</a></li>
+          <li><a href="#lineup">Lineup</a></li>
+          <li><a href="#parlance">Peel parlance</a></li>
+          <li><a href="#scores">Scores</a></li>
+          <li><a href="#register">Sign up</a></li>
         </ul>
       </nav>
+      <search>
+        <form method="get" action="#parlance">
+          <p>
+            <label for="find-dancer">Find a dancer</label>
+            <input
+              id="find-dancer"
+              name="q"
+              type="search"
+              placeholder="e.g. Nana Twist"
+            />
+            <button type="submit">Search the floor</button>
+          </p>
+        </form>
+      </search>
     </header>
-    <article>
-      <h2>Banana Dance</h2>
-      <figure>
-        <img src="img/banana-dance.gif" alt="banana dance" />
-        <figcaption>Banana Dance</figcaption>
-      </figure>
-      <p>Here we see a banana in its native habitat, the dance floor.</p>
-    </article>
+
+    <main>
+      <article id="recap">
+        <h2>Last Saturday at the Peel Palace</h2>
+        <p>
+          On <time datetime="2026-08-29">29 August 2026</time>, the house banana
+          returned to its native habitat: the dance floor. The
+          <abbr title="Beats Per Minute">BPM</abbr> hit
+          <data value="118">118</data>, the lights went potassium-gold, and
+          <b>everyone</b> felt the peel.
+        </p>
+        <figure>
+          <picture>
+            <source
+              media="(min-width: 600px)"
+              srcset="img/banana-dance.gif"
+              type="image/gif"
+            />
+            <img
+              src="img/banana-dance.gif"
+              alt="A banana dancing under the Peel Palace lights"
+              width="200"
+              height="200"
+              usemap="#palace-map"
+            />
+          </picture>
+          <figcaption>
+            The house banana mid-routine. Click the left half for tonight’s
+            lineup, or the right half to sign up.
+          </figcaption>
+        </figure>
+        <map name="palace-map">
+          <area
+            shape="rect"
+            coords="0,0,100,200"
+            href="#lineup"
+            alt="Tonight's lineup"
+          />
+          <area
+            shape="rect"
+            coords="100,0,200,200"
+            href="#register"
+            alt="Sign up to dance"
+          />
+        </map>
+        <p>
+          Regulars still talk about dancer
+          <bdi>نانا Peel</bdi> sharing the floor with
+          <bdo dir="rtl">Mirror Mode Nana</bdo>. In Japanese the fruit is
+          <ruby>バナナ<rp>(</rp><rt>banana</rt><rp>)</rp></ruby>. One chalkboard
+          still <u>mispells</u> the club as “Peel Palance.”
+        </p>
+        <blockquote>
+          <p>A banana that will not dance is only a snack waiting to happen.</p>
+          <p>
+            — from
+            <cite>The Potassium Papers: A History of Peel Palace</cite>
+          </p>
+        </blockquote>
+        <p>
+          The <dfn>peel-out</dfn> is the signature step: a sharp spin that
+          <em>must</em> land on the beat. The <i>a tempo</i> rule is simple. As
+          the MC put it, <q>If you bruise, you lose.</q> Do
+          <strong>not</strong> bring real fruit onto the floor.
+        </p>
+        <p>
+          The yellow in the air is no accident. Ripe banana aroma comes from
+          isoamyl acetate, C<sub>7</sub>H<sub>14</sub>O<sub>2</sub>, which the
+          fog machine claims to honor in spirit only. Last week’s
+          <s>half-price peel punch</s> is gone; tickets are full price again.
+        </p>
+        <p>
+          Featured tonight:
+          <mark>the house banana, live, unpeeled, unstoppable</mark>.
+        </p>
+        <p>
+          The house banana traces its lineage to this Know Your Meme original:
+        </p>
+        <figure>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/Vm2hnu5X57w?si=XCSbIWmbIHMrbTdO"
+            title="Know Your Meme: dancing banana"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <figcaption>
+            The dancing banana that started it all, via Know Your Meme.
+          </figcaption>
+        </figure>
+
+        <h3>Warm-up workshop</h3>
+        <p>
+          Before doors, Coach Split ran a workshop for first-peels. The room
+          smelled like victory and slightly of lunch.
+        </p>
+
+        <h4>The peel-out</h4>
+        <p>
+          Start square to the mirrors. Bend. Commit. The crowd will
+          <em>help</em> if you commit.
+        </p>
+
+        <h5>Footwork</h5>
+        <p>
+          Tiny steps, big personality. Yellow shoes are tradition, not a
+          requirement.
+        </p>
+
+        <h6>A note on yellow shoes</h6>
+        <p>
+          If you wear them, dance in them. If you do not, the banana will not
+          mind. The banana minds only about the beat.
+        </p>
+
+        <hr />
+
+        <p>
+          After the workshop came the main set. The rest of this page is for
+          <strong>tonight</strong>.
+        </p>
+      </article>
+
+      <section id="lineup">
+        <h2>Tonight’s lineup</h2>
+        <p>
+          Doors were listed as <del>19:30</del> <ins>20:00</ins>. The banana
+          needed a longer nap.
+        </p>
+        <ol>
+          <li>20:00 — House lights down, peel lights up</li>
+          <li>20:15 — Nana Twist and the Slippery Six</li>
+          <li>21:00 — Open floor, all ripeness levels</li>
+          <li>22:30 — Contest finals and a possible encore wiggle</li>
+        </ol>
+        <p>House rules, no exceptions:</p>
+        <ul>
+          <li>No actual peeling on the dance floor</li>
+          <li>Share the spotlight; it is round for a reason</li>
+          <li>Cheer in potassium-positive language</li>
+        </ul>
+        <p>DJ booth commands for the night:</p>
+        <menu>
+          <li><button type="button">Peel</button></li>
+          <li><button type="button">Spin</button></li>
+          <li><button type="button">Freeze</button></li>
+        </menu>
+        <pre>
+8-count peel-out
+1-2  plant
+3-4  swivel
+5-6  full spin
+7-8  pose (hold the curve)
+        </pre>
+        <p>
+          Tech booth: set <code>spot.color = "gold"</code>, then press
+          <kbd>Ctrl</kbd> + <kbd>P</kbd> for peel-mode. When the desk is happy
+          it prints <samp>PEEL MODE ON</samp>. Fog density is the variable
+          <var>ripe</var>, from 0 (green) to 1 (dessert).
+        </p>
+        <p>Crowd anthem from last week’s roar, and the recap reel:</p>
+        <audio controls>
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
+        <video controls width="320" poster="img/banana-dance.gif">
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+            type="video/mp4"
+          />
+          <track
+            kind="captions"
+            srclang="en"
+            label="English"
+            src="https://interactive-examples.mdn.mozilla.net/media/examples/friday.vtt"
+            default
+          />
+        </video>
+      </section>
+
+      <section id="parlance">
+        <h2>Peel parlance</h2>
+        <p>Words you will hear before the first spin.</p>
+        <dl>
+          <dt>Peel-out</dt>
+          <dd>The signature spin, landed on the beat or not at all.</dd>
+          <dt>Green room</dt>
+          <dd>
+            Not a dressing room: a dancer who has not ripened into the drop.
+          </dd>
+          <dt>Potassium point</dt>
+          <dd>One point on the contest card for a clean curve.</dd>
+        </dl>
+      </section>
+
+      <section id="scores">
+        <h2>Contest scores</h2>
+        <p>
+          Official card from last Saturday. House Banana took 1<sup>st</sup>.
+        </p>
+        <table>
+          <caption>
+            Peel Palace contest results, last Saturday
+          </caption>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Dancer</th>
+              <th scope="col">Style</th>
+              <th scope="col">Peel points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">House Banana</th>
+              <td>Freestyle wiggle</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <th scope="row">Nana Twist</th>
+              <td>Slip-step</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <th scope="row">Split Step</th>
+              <td>Workshop demo</td>
+              <td>7</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Floor total</th>
+              <td>Three finalists</td>
+              <td>28</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <section id="register">
+        <h2>Sign up to dance</h2>
+        <!-- <dialog open>
+          <p>
+            <strong>Doors at 8.</strong> The banana napped late. Come ripe,
+            come ready.
+          </p>
+        </dialog> -->
+        <form method="get" action="#">
+          <fieldset>
+            <legend>Dancer details</legend>
+            <p>
+              <label for="stage-name">Stage name</label>
+              <input
+                id="stage-name"
+                name="stage-name"
+                type="text"
+                list="stage-names"
+                required
+              />
+              <datalist id="stage-names">
+                <option value="Peel Gonnasun"></option>
+                <option value="Nana Twist"></option>
+                <option value="Split Step"></option>
+              </datalist>
+            </p>
+            <p>
+              <label for="email">Contact peel-mail</label>
+              <input id="email" name="email" type="email" required />
+            </p>
+            <p>
+              <label for="style">Dance family</label>
+              <select id="style" name="style">
+                <optgroup label="Street">
+                  <option value="wiggle">Freestyle wiggle</option>
+                  <option value="slip">Slip-step</option>
+                </optgroup>
+                <optgroup label="Novelty">
+                  <option value="peel-out">Peel-out</option>
+                  <option value="freeze">Freeze and gleam</option>
+                </optgroup>
+              </select>
+            </p>
+            <p>
+              <label for="bio">How do you dance?</label>
+              <textarea id="bio" name="bio" rows="4" cols="40">
+I arrive yellow and leave legendary.</textarea
+              >
+            </p>
+          </fieldset>
+          <p>
+            Estimated peel-points for a first night:
+            <output name="peel-points">8</output>
+          </p>
+          <p>
+            <label for="costume">Costume stitching</label>
+            <progress id="costume" max="100" value="70">70%</progress>
+          </p>
+          <p>
+            <label for="ripeness">Ripeness</label>
+            <meter
+              id="ripeness"
+              min="0"
+              max="1"
+              low="0.3"
+              high="0.8"
+              optimum="1"
+              value="0.85"
+            >
+              nicely ripe
+            </meter>
+          </p>
+          <p>
+            <button type="submit">Save my spot</button>
+          </p>
+        </form>
+        <details>
+          <summary>House-rule FAQ</summary>
+          <p>
+            Yes, the banana is the headliner. No, you may not replace the
+            banana. Yes, yellow outfits score sympathy points. No, we do not
+            serve banana bread during the set.
+          </p>
+        </details>
+      </section>
+    </main>
+
     <aside>
       All joking aside,
       <a
@@ -33,5 +384,20 @@
         >save the bananas!</a
       >
     </aside>
+
+    <footer>
+      <address>
+        Peel Palace<br />
+        1 Bunch Boulevard<br />
+        Yellow Room, Dance District<br />
+        <a href="mailto:doors@peelpalace.example">doors@peelpalace.example</a>
+      </address>
+      <p>
+        <small
+          >Peel Palace is a fictional club. No bananas were harmed, only
+          hyped.</small
+        >
+      </p>
+    </footer>
   </body>
 </html>

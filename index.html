@@ -1,14 +1,457 @@
-<!-- add all items from grading group 1 and 2. Search for items in group 5 that refer to css f.e. author attribute value-->
+<!-- CSS Positioning Lab: all layout rules live in css/style.css. No inline styles. No divs. -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Markup Starter</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta name="author" content="CSS Positioning Lab" />
+    <title>CSS Positioning Lab</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <p>Hello web markup!</p>
-    <img src="img/banana-dance.gif" alt="banana dance" />
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="hero">
+      <p class="eyebrow">Interactive CSS lab</p>
+      <h1>CSS Positioning</h1>
+      <p class="lede">
+        The five <code>position</code> values change whether a box stays in document
+        flow, which ancestor it is measured from, and how it reacts to scrolling.
+        This page does not print the important numbers. Open your inspector and
+        read them from <code>css/style.css</code>.
+      </p>
+    </header>
+
+    <nav class="site-nav" aria-label="On this page">
+      <ul>
+        <li><a href="#inspect">Inspector</a></li>
+        <li><a href="#static">Static</a></li>
+        <li><a href="#relative">Relative</a></li>
+        <li><a href="#absolute">Absolute</a></li>
+        <li><a href="#fixed">Fixed</a></li>
+        <li><a href="#sticky">Sticky</a></li>
+        <li><a href="#stacking">Stacking</a></li>
+        <li><a href="#playground">Playground</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+      </ul>
+    </nav>
+
+    <main id="main">
+      <section id="inspect" class="lesson">
+        <h2>Use the inspector first</h2>
+        <p>
+          Every demo box on this page is styled only from the stylesheet. Right-click
+          a box, choose <strong>Inspect</strong>, and read the
+          <code>position</code>, offset, and <code>z-index</code> rules in the
+          Styles pane. The Computed pane shows the used values after the cascade.
+        </p>
+        <ol class="inspect-steps">
+          <li>
+            Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>
+            (<kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>C</kbd> on macOS) and click
+            a labeled box.
+          </li>
+          <li>
+            In <strong>Styles</strong>, find <code>position</code>. Hover the
+            property to see the box overlay in the page.
+          </li>
+          <li>
+            Check <code>top</code>, <code>right</code>, <code>bottom</code>,
+            <code>left</code>, and <code>z-index</code>. If a rule looks unused,
+            that is a clue — static boxes ignore offsets.
+          </li>
+          <li>
+            Open <strong>Sources</strong> and open <code>css/style.css</code> to
+            see the same rules in context, including the lab comments.
+          </li>
+        </ol>
+      </section>
+
+      <section id="static" class="lesson">
+        <h2>Static — the default</h2>
+        <p>
+          <code>position: static</code> is normal document flow. Boxes stack in
+          source order. Offsets and <code>z-index</code> do not move them, even
+          when those properties exist in the CSS.
+        </p>
+        <p>
+          Box <strong>B</strong> has <code>top</code> and <code>left</code> in the
+          stylesheet on purpose. Inspect it and explain why it has not moved.
+        </p>
+        <section class="stage" aria-label="Static positioning demo">
+          <article class="box">A</article>
+          <article class="box static-offset-box" tabindex="0" title="Inspect me">
+            B
+            <small>Inspect my offsets</small>
+          </article>
+          <article class="box">C</article>
+        </section>
+      </section>
+
+      <section id="relative" class="lesson">
+        <h2>Relative — offset, keep your seat</h2>
+        <p>
+          A relatively positioned box still occupies its original space in the
+          flow. Offsets nudge the painted box from that original position. Toggle
+          the offsets, then inspect box <strong>B</strong> to see which properties
+          change.
+        </p>
+        <form>
+          <fieldset>
+            <legend>Relative offsets</legend>
+            <label>
+              <input type="checkbox" id="apply-relative-offset" checked />
+              Apply the stylesheet offsets
+            </label>
+          </fieldset>
+        </form>
+        <section class="stage" aria-label="Relative positioning demo">
+          <article class="box">A</article>
+          <article class="box relative-box" tabindex="0" title="Inspect me">
+            B
+            <small>I keep my gap</small>
+          </article>
+          <article class="box">C</article>
+        </section>
+      </section>
+
+      <section id="absolute" class="lesson">
+        <h2>Absolute — leave the flow</h2>
+        <p>
+          An absolutely positioned box is removed from flow, so siblings close the
+          gap. Offsets are measured from the nearest <em>positioned</em> ancestor
+          (anything except static). If every ancestor is static, it uses the
+          initial containing block.
+        </p>
+        <p>
+          Inspect each <code>aside</code> badge, then inspect its parent. One
+          parent is positioned and keeps the badge. The other is static, so the
+          badge climbs to the lab around both columns.
+        </p>
+        <section class="absolute-lab" aria-label="Containing block lab">
+          <p class="lab-note">
+            This lab section is a containing block. Inspect it for
+            <code>position</code>.
+          </p>
+          <section class="compare">
+            <section class="parent parent-positioned">
+              <h3>Positioned parent</h3>
+              <p>Inspect my <code>position</code>.</p>
+              <aside class="pinned pinned-contained" title="Inspect me">
+                Corner badge
+              </aside>
+            </section>
+            <section class="parent parent-static">
+              <h3>Static parent</h3>
+              <p>I cannot contain the badge.</p>
+              <aside class="pinned pinned-escaped" title="Inspect me">
+                Escaped badge
+              </aside>
+            </section>
+          </section>
+        </section>
+        <figure class="photo-frame">
+          <img src="img/banana-dance.gif" alt="A dancing banana" />
+          <figcaption class="photo-badge" title="Inspect me">
+            Overlay caption — inspect my offsets
+          </figcaption>
+        </figure>
+        <p>
+          This figure is a real layout pattern: the frame is positioned, the
+          caption is absolute. Find the <code>top</code> and <code>right</code>
+          values in the inspector — they are not written in this HTML.
+        </p>
+      </section>
+
+      <section id="fixed" class="lesson">
+        <h2>Fixed — pin to the viewport</h2>
+        <p>
+          Fixed boxes leave the flow and are positioned against the viewport. They
+          stay on screen while the document scrolls. The inspector tip along the
+          bottom of this page is already fixed — inspect that
+          <code>aside</code> before you toggle the banner below.
+        </p>
+        <form>
+          <fieldset>
+            <legend>Viewport pin</legend>
+            <label>
+              <input type="checkbox" id="pin-banner" />
+              Pin the banner to the viewport, then scroll the page
+            </label>
+          </fieldset>
+        </form>
+        <aside class="fixed-banner" title="Inspect me">
+          <p>
+            Inspect my <code>position</code>. When I am pinned I should stay put
+            while you scroll. Uncheck the box to return me to normal flow.
+          </p>
+        </aside>
+      </section>
+
+      <section id="sticky" class="lesson">
+        <h2>Sticky — in flow, then cling</h2>
+        <p>
+          Sticky is a hybrid. The box stays in flow until it hits a threshold
+          (<code>top</code> is the usual one), then it sticks inside its scroll
+          ancestor. The section navigation at the top of this page is sticky —
+          inspect it, then scroll this inner scroller.
+        </p>
+        <section class="sticky-scroller" aria-label="Sticky heading demo">
+          <article>
+            <h3>Chapter 1</h3>
+            <p>
+              Scroll this panel. Each chapter heading should stick to the top of
+              the panel, not the browser window. Inspect a heading for
+              <code>position</code> and <code>top</code>.
+            </p>
+            <p>
+              Sticky still occupies space in the flow, which is why the paragraphs
+              do not jump underneath the heading until you scroll.
+            </p>
+          </article>
+          <article>
+            <h3>Chapter 2</h3>
+            <p>
+              When Chapter 2 reaches the top, it should push Chapter 1 away.
+              That hand-off is a clue that sticky is constrained by this scroller.
+            </p>
+            <p>
+              Inspect the scroller itself and look for <code>overflow</code>. A
+              sticky box cannot escape the ancestor that actually scrolls.
+            </p>
+          </article>
+          <article>
+            <h3>Chapter 3</h3>
+            <p>
+              Compare this with the inspector tip: that tip uses fixed
+              positioning, so it ignores this panel and follows the viewport
+              instead.
+            </p>
+            <p>
+              If sticky appears to fail, check whether any ancestor has
+              <code>overflow</code>, <code>transform</code>, or a filter — then
+              confirm <code>top</code> is set.
+            </p>
+          </article>
+        </section>
+      </section>
+
+      <section id="stacking" class="lesson">
+        <h2>Stacking — z-index needs a position</h2>
+        <p>
+          <code>z-index</code> only creates a stacking level on positioned boxes
+          (and a few other contexts such as flex items). The gray card claims a
+          huge <code>z-index</code> in CSS. Inspect all three cards and explain
+          why the gray one still loses.
+        </p>
+        <section class="stage stack-stage" aria-label="z-index demo">
+          <article class="stack-card stack-static" tabindex="0" title="Inspect me">
+            Static card
+            <small>Why does my z-index fail?</small>
+          </article>
+          <article class="stack-card stack-back" tabindex="0" title="Inspect me">
+            Back card
+          </article>
+          <article class="stack-card stack-front" tabindex="0" title="Inspect me">
+            Front card
+          </article>
+        </section>
+      </section>
+
+      <section id="playground" class="lesson playground">
+        <h2>Position playground</h2>
+        <p>
+          Choose a positioning scheme. The subject article is restyled from CSS
+          using <code>:has()</code>. After every change, inspect the subject —
+          and watch the siblings. If they jump up, the subject left the flow.
+        </p>
+        <p>
+          Scroll inside the stage to compare <strong>fixed</strong> (viewport)
+          with <strong>sticky</strong> (this stage). Inspect the stage to find
+          the containing block used by <strong>absolute</strong>.
+        </p>
+        <form>
+          <fieldset>
+            <legend>position</legend>
+            <label>
+              <input type="radio" name="demo-position" id="opt-static" checked />
+              static
+            </label>
+            <label>
+              <input type="radio" name="demo-position" id="opt-relative" />
+              relative
+            </label>
+            <label>
+              <input type="radio" name="demo-position" id="opt-absolute" />
+              absolute
+            </label>
+            <label>
+              <input type="radio" name="demo-position" id="opt-fixed" />
+              fixed
+            </label>
+            <label>
+              <input type="radio" name="demo-position" id="opt-sticky" />
+              sticky
+            </label>
+          </fieldset>
+          <section class="playground-stage" aria-label="Interactive positioning stage">
+            <p class="flow-item">Sibling before the subject. Watch whether I shift.</p>
+            <article class="subject" id="subject-box" tabindex="0" title="Inspect me">
+              <h3>Subject article</h3>
+              <p>
+                Right-click me and choose Inspect. Read <code>position</code> in
+                the Styles pane after each radio change.
+              </p>
+            </article>
+            <p class="flow-item">
+              Sibling after the subject. If I jump upward, the subject left the
+              document flow.
+            </p>
+            <p class="flow-item">
+              More flow content so this stage can scroll. Sticky needs a scrolling
+              ancestor — inspect this stage for <code>overflow</code>.
+            </p>
+            <p class="flow-item">
+              Keep scrolling. Fixed should stay on the viewport; sticky should
+              stick inside this stage.
+            </p>
+            <p class="flow-item">
+              Still going. Compare how each position type treats this scroll.
+            </p>
+          </section>
+        </form>
+      </section>
+
+      <section id="challenges" class="lesson">
+        <h2>Inspector challenges</h2>
+        <p>
+          Answer from DevTools, then open the solution. Guessing from the HTML
+          will not work — the values live in the CSS file.
+        </p>
+        <ol class="challenge-list">
+          <li>
+            <p>What <code>position</code> value is used on the section navigation?</p>
+            <details>
+              <summary>Reveal after inspecting</summary>
+              <p>
+                The nav is <code>sticky</code>. That is why it clings to the top
+                of the viewport while remaining in the document flow.
+              </p>
+            </details>
+          </li>
+          <li>
+            <p>
+              With offsets applied, what are the <code>top</code> and
+              <code>left</code> values on relative box B?
+            </p>
+            <details>
+              <summary>Reveal after inspecting</summary>
+              <p>Look at <code>.relative-box</code> in the stylesheet for both offsets.</p>
+            </details>
+          </li>
+          <li>
+            <p>
+              Which element is the containing block for the banana caption?
+              What are its <code>top</code> and <code>right</code> offsets?
+            </p>
+            <details>
+              <summary>Reveal after inspecting</summary>
+              <p>
+                The <code>figure.photo-frame</code> is positioned, so it contains
+                the absolute <code>figcaption</code>. Read the offsets from
+                <code>.photo-badge</code>.
+              </p>
+            </details>
+          </li>
+          <li>
+            <p>
+              What <code>z-index</code> does the front stacking card use, and why
+              does the static card ignore its own <code>z-index</code>?
+            </p>
+            <details>
+              <summary>Reveal after inspecting</summary>
+              <p>
+                The front card is positioned, so its <code>z-index</code> counts.
+                The gray card is <code>static</code>, so its <code>z-index</code>
+                has no effect.
+              </p>
+            </details>
+          </li>
+          <li>
+            <p>
+              What <code>top</code> value makes the chapter headings stick inside
+              the inner scroller?
+            </p>
+            <details>
+              <summary>Reveal after inspecting</summary>
+              <p>Inspect any <code>h3</code> inside <code>.sticky-scroller</code>.</p>
+            </details>
+          </li>
+        </ol>
+      </section>
+
+      <section id="cheatsheet" class="lesson">
+        <h2>Quick map</h2>
+        <p>
+          Use this table after you have inspected the demos. It is a memory aid,
+          not a substitute for reading the computed styles.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Value</th>
+              <th>In flow?</th>
+              <th>Offsets measured from</th>
+              <th>On scroll</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>static</th>
+              <td>Yes</td>
+              <td>Ignored</td>
+              <td>Scrolls with the document</td>
+            </tr>
+            <tr>
+              <th>relative</th>
+              <td>Yes (original space kept)</td>
+              <td>The box’s own starting position</td>
+              <td>Scrolls with the document</td>
+            </tr>
+            <tr>
+              <th>absolute</th>
+              <td>No</td>
+              <td>Nearest positioned ancestor</td>
+              <td>Scrolls with that ancestor</td>
+            </tr>
+            <tr>
+              <th>fixed</th>
+              <td>No</td>
+              <td>The viewport</td>
+              <td>Stays on screen</td>
+            </tr>
+            <tr>
+              <th>sticky</th>
+              <td>Yes, until the threshold</td>
+              <td>The nearest scroll ancestor</td>
+              <td>Clings until the ancestor ends</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <aside class="inspector-coach" title="Inspect me — I am position: fixed">
+      <p><strong>Inspector</strong></p>
+      <p><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></p>
+      <p>Click a demo box, then read <code>position</code> in Styles.</p>
+    </aside>
+
+    <footer>
+      <p>
+        All positioning rules live in <code>css/style.css</code>. There are no
+        inline styles on this page. If you cannot see a number here, inspect it.
+      </p>
+    </footer>
   </body>
 </html>

@@ -1,8 +1,752 @@
-/* add all items from grading group 3 and 4. Search for items in group 5 that refer to css f.e. z index */
-body {
-  background-color: yellow;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+/* ============================================================
+   CSS Positioning Lab
+   Open this file in DevTools → Sources, or inspect any demo
+   box and read the matching rule in the Styles pane.
+   Offset and z-index numbers are intentionally not repeated
+   in the HTML.
+   ============================================================ */
+
+:root {
+  --ink: #1c1917;
+  --muted: #57534e;
+  --paper: #f6f1e7;
+  --paper-2: #ece4d4;
+  --navy: #1e2a4a;
+  --navy-2: #162036;
+  --cream: #fffdf8;
+  --accent: #c2410c;
+  --sky: #0369a1;
+  --rose: #be123c;
+  --violet: #6d28d9;
+  --emerald: #047857;
+  --line: #d6cbb8;
+  --shadow: 0 12px 32px rgb(28 25 23 / 0.12);
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius: 14px;
+  --content: 68rem;
 }
 
-p {
-  color: magenta;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.55;
+  background:
+    radial-gradient(circle at top left, rgb(194 65 12 / 0.08), transparent 28rem),
+    var(--paper);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+}
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.7rem;
+}
+
+h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+p,
+li {
+  color: var(--ink);
+}
+
+code,
+kbd {
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+code {
+  padding: 0.1em 0.35em;
+  border-radius: 0.3em;
+  background: var(--paper-2);
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 0.3em;
+  background: var(--cream);
+}
+
+/* --------------------------------------------------
+   Skip link — inspect me for position: absolute
+   -------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -100%;
+  z-index: 80;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* --------------------------------------------------
+   Hero
+   -------------------------------------------------- */
+.hero {
+  padding: 2.5rem 1.25rem 2.75rem;
+  color: #f8f4ec;
+  background:
+    linear-gradient(160deg, rgb(22 32 54 / 0.55), var(--navy-2)),
+    var(--navy);
+}
+
+.hero .eyebrow,
+.hero .lede,
+.hero h1 {
+  max-width: 42rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: #fdba74;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.lede {
+  margin: 0;
+  color: #e7e0d3;
+  font-size: 1.08rem;
+}
+
+.hero code {
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+}
+
+/* --------------------------------------------------
+   Site nav — inspect me for position: sticky
+   -------------------------------------------------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid var(--line);
+  background: rgb(246 241 231 / 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 0.7rem 1.25rem;
+  list-style: none;
+}
+
+.site-nav a {
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   Page layout
+   -------------------------------------------------- */
+main,
+footer {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.lesson {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 3.5rem;
+}
+
+.lesson:last-of-type {
+  border-bottom: 0;
+}
+
+/* --------------------------------------------------
+   Shared demo stage
+   A 20px grid makes offsets easier to judge by eye.
+   -------------------------------------------------- */
+.stage,
+.playground-stage,
+.absolute-lab,
+.sticky-scroller {
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(45deg, var(--paper-2) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--paper-2) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--paper-2) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--paper-2) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  border: 1px dashed #b8ab94;
+  border-radius: var(--radius);
+}
+
+.stage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  min-height: 11rem;
+  padding: 1rem;
+  align-items: flex-start;
+}
+
+.box,
+.stack-card,
+.subject,
+.pinned,
+.photo-badge,
+.fixed-banner,
+.inspector-coach {
+  cursor: help;
+}
+
+.box:hover,
+.box:focus-visible,
+.subject:hover,
+.subject:focus-visible,
+.stack-card:hover,
+.stack-card:focus-visible,
+.pinned:hover,
+.photo-badge:hover,
+.fixed-banner:hover,
+.inspector-coach:hover {
+  outline: 2px dashed currentcolor;
+  outline-offset: 3px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 7rem;
+  min-height: 7rem;
+  padding: 0.6rem;
+  border-radius: 0.85rem;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.box small {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+form {
+  margin: 0 0 1rem;
+}
+
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+}
+
+legend {
+  padding: 0 0.4rem;
+  font-weight: 700;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   STATIC
+   Offsets are set so students can find them in DevTools
+   and watch them have no effect.
+   ============================================================ */
+.static-offset-box {
+  position: static;
+  top: 40px;
+  left: 48px;
+  background: #57534e;
+}
+
+/* ============================================================
+   RELATIVE
+   Inspect .relative-box after toggling the checkbox.
+   ============================================================ */
+.relative-box {
+  position: relative;
+  background: var(--sky);
+}
+
+#relative:has(#apply-relative-offset:checked) .relative-box {
+  top: 28px;
+  left: 36px;
+}
+
+/* ============================================================
+   ABSOLUTE + containing blocks
+   Inspect .absolute-lab, both parents, and both badges.
+   ============================================================ */
+.absolute-lab {
+  position: relative;
+  min-height: 16rem;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.lab-note {
+  margin: 0 9rem 0.85rem 0;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.7rem;
+  background: rgb(255 253 248 / 0.9);
+  font-size: 0.95rem;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.parent {
+  min-height: 11rem;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: rgb(255 253 248 / 0.94);
+}
+
+.parent-positioned {
+  position: relative;
+  border: 2px solid var(--sky);
+}
+
+.parent-static {
+  position: static;
+  border: 2px dashed #a8a29e;
+}
+
+.pinned {
+  width: max-content;
+  max-width: 11rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.55rem;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pinned-contained {
+  position: absolute;
+  right: 12px;
+  bottom: 14px;
+  background: var(--rose);
+}
+
+.pinned-escaped {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: var(--violet);
+}
+
+.photo-frame {
+  position: relative;
+  width: min(22rem, 100%);
+  margin: 0 0 1rem;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--navy-2);
+  box-shadow: var(--shadow);
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+}
+
+.photo-badge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgb(30 42 74 / 0.92);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   FIXED
+   The inspector coach is always fixed.
+   The banner becomes fixed when #pin-banner is checked.
+   ============================================================ */
+.fixed-banner {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  background: #4c1d95;
+  color: #f5f3ff;
+  box-shadow: var(--shadow);
+}
+
+.fixed-banner p {
+  margin: 0;
+  color: inherit;
+}
+
+.fixed-banner code {
+  background: rgb(255 255 255 / 0.14);
+  color: #fff;
+}
+
+body:has(#pin-banner:checked) .fixed-banner {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  left: 12px;
+  z-index: 60;
+}
+
+.inspector-coach {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.1rem;
+  align-items: baseline;
+  padding: 0.7rem 1.25rem;
+  background: var(--accent);
+  color: #fff7ed;
+  box-shadow: 0 -8px 24px rgb(28 25 23 / 0.12);
+}
+
+.inspector-coach p {
+  margin: 0;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.inspector-coach kbd,
+.inspector-coach code {
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+  border-color: rgb(255 255 255 / 0.28);
+}
+
+/* ============================================================
+   STICKY
+   Inspect the h3 rules and the scroller’s overflow.
+   ============================================================ */
+.sticky-scroller {
+  height: 18rem;
+  overflow: auto;
+  padding: 0.75rem;
+}
+
+.sticky-scroller article {
+  margin: 0 0 1rem;
+  padding: 0 0 1rem;
+  background: rgb(255 253 248 / 0.88);
+  border-radius: 0.8rem;
+}
+
+.sticky-scroller h3 {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0.65rem 0.8rem;
+  background: var(--emerald);
+  color: #ecfdf5;
+}
+
+.sticky-scroller p {
+  margin: 0.75rem 0.8rem;
+}
+
+/* ============================================================
+   STACKING / z-index
+   The static card’s z-index is a decoy — inspect to confirm.
+   ============================================================ */
+.stack-stage {
+  display: block;
+  min-height: 13rem;
+  position: relative;
+}
+
+.stack-card {
+  width: 11rem;
+  padding: 0.85rem;
+  border-radius: 0.85rem;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+.stack-card small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.stack-static {
+  position: static;
+  z-index: 100;
+  background: #78716c;
+}
+
+.stack-back {
+  position: relative;
+  z-index: 3;
+  top: -28px;
+  left: 64px;
+  background: var(--sky);
+}
+
+.stack-front {
+  position: relative;
+  z-index: 7;
+  top: -56px;
+  left: 128px;
+  background: var(--rose);
+}
+
+/* ============================================================
+   PLAYGROUND
+   Radio buttons restyle .subject through :has().
+   Inspect #subject-box after every change.
+   ============================================================ */
+.playground-stage {
+  position: relative;
+  height: 18rem;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.flow-item {
+  margin: 0 0 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.7rem;
+  background: rgb(255 253 248 / 0.92);
+}
+
+.subject {
+  width: min(18rem, 100%);
+  margin: 0 0 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: var(--accent);
+  color: #fff7ed;
+  box-shadow: var(--shadow);
+}
+
+.subject h3,
+.subject p {
+  color: inherit;
+}
+
+.subject p {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.subject code {
+  background: rgb(255 255 255 / 0.16);
+  color: #fff;
+}
+
+.playground fieldset label:has(input:checked) {
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+}
+
+.playground .subject {
+  position: static;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+}
+
+.playground:has(#opt-relative:checked) .subject {
+  position: relative;
+  top: 24px;
+  left: 32px;
+  background: var(--sky);
+}
+
+.playground:has(#opt-absolute:checked) .subject {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  background: var(--rose);
+}
+
+.playground:has(#opt-fixed:checked) .subject {
+  position: fixed;
+  top: 4.25rem;
+  right: 20px;
+  z-index: 45;
+  width: 16rem;
+  background: var(--violet);
+}
+
+.playground:has(#opt-sticky:checked) .subject {
+  position: sticky;
+  top: 8px;
+  z-index: 2;
+  background: var(--emerald);
+}
+
+/* --------------------------------------------------
+   Challenges, table, footer
+   -------------------------------------------------- */
+.inspect-steps,
+.challenge-list {
+  padding-left: 1.2rem;
+}
+
+.challenge-list li {
+  margin-bottom: 0.85rem;
+}
+
+.challenge-list p {
+  margin: 0 0 0.35rem;
+}
+
+details {
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.6rem;
+  background: var(--paper-2);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--cream);
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+th,
+td {
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  background: var(--navy);
+  color: #f8f4ec;
+}
+
+tbody th {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+}
+
+footer {
+  padding: 1.5rem 1.25rem 6.5rem;
+  color: var(--muted);
+}
+
+footer p {
+  margin: 0;
+  color: inherit;
+}
+
+@media (max-width: 800px) {
+  .compare {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-front {
+    left: 72px;
+  }
+
+  .playground:has(#opt-fixed:checked) .subject {
+    right: 12px;
+    top: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

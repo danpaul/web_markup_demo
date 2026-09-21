@@ -1,15 +1,278 @@
-<!-- add all items from grading group 1 and 2. Search for items in group 5 that refer to css f.e. author attribute value-->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flex Exercise</title>
+    <title>Campus Hub — Flexbox Demo</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <section>
-      <article class="box">A</article>
-    </section>
+    <!-- Navigation bar / Header: logo + links + user controls -->
+    <header class="site-header">
+      <a class="logo" href="#">Campus Hub</a>
+      <nav class="main-nav" aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Library</a></li>
+        </ul>
+      </nav>
+      <div class="user-controls">
+        <span class="avatar-chip" aria-hidden="true">JD</span>
+        <button type="button" class="btn">Log in</button>
+        <button type="button" class="btn btn-primary">Sign up</button>
+      </div>
+    </header>
+
+    <div class="page">
+      <!-- Breadcrumbs: links in a row -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li aria-current="page">Web Markup</li>
+        </ol>
+      </nav>
+
+      <!-- Hero: text + illustration side by side -->
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Flexbox lesson</p>
+          <h1>Build layouts by lining things up</h1>
+          <p>
+            This campus page is a first-year demo. Every section uses Flexbox
+            to place items in a row or a column. Look at the CSS comments to
+            see which properties create each pattern.
+          </p>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary">Browse courses</button>
+            <button type="button" class="btn">How Flexbox works</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-block hero-block-a"></div>
+          <div class="hero-block hero-block-b"></div>
+          <div class="hero-block hero-block-c"></div>
+        </div>
+      </section>
+
+      <!-- Toolbar: controls distributed across a row -->
+      <div class="toolbar" role="toolbar" aria-label="Course tools">
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn" aria-label="List view">☰</button>
+          <button type="button" class="tool-btn" aria-label="Filter">⚙</button>
+          <button type="button" class="tool-btn" aria-label="Sort">↕</button>
+        </div>
+        <p class="toolbar-label">12 courses this term</p>
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn" aria-label="Search">⌕</button>
+          <button type="button" class="tool-btn" aria-label="Share">↗</button>
+        </div>
+      </div>
+
+      <!-- Sidebar + main content -->
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Filters</h2>
+          <ul class="side-nav">
+            <li><a href="#" class="is-active">All courses</a></li>
+            <li><a href="#">First year</a></li>
+            <li><a href="#">Web markup</a></li>
+            <li><a href="#">Programming</a></li>
+            <li><a href="#">Design</a></li>
+          </ul>
+          <p class="side-note">
+            The sidebar sits next to the main column because this layout is a
+            flex row.
+          </p>
+        </aside>
+
+        <main>
+          <!-- Card grid: cards in a wrapping row; each card is a column -->
+          <section aria-labelledby="courses-heading">
+            <h2 id="courses-heading">Featured courses</h2>
+            <div class="card-grid">
+              <article class="card">
+                <div class="card-image card-image-1" role="img" aria-label="HTML course"></div>
+                <div class="card-body">
+                  <h3>HTML Foundations</h3>
+                  <p>Structure a page with headings, lists, links, and forms.</p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Open</button>
+                    <button type="button" class="btn">Syllabus</button>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <div class="card-image card-image-2" role="img" aria-label="CSS course"></div>
+                <div class="card-body">
+                  <h3>CSS Flexbox</h3>
+                  <p>Line up navigation, cards, heroes, and footers with flex.</p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Open</button>
+                    <button type="button" class="btn">Syllabus</button>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <div class="card-image card-image-3" role="img" aria-label="Accessibility course"></div>
+                <div class="card-body">
+                  <h3>Accessible Pages</h3>
+                  <p>Write semantic HTML so every student can use the site.</p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Open</button>
+                    <button type="button" class="btn">Syllabus</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Media object: thumbnail + text -->
+          <section aria-labelledby="notice-heading">
+            <h2 id="notice-heading">Campus notice</h2>
+            <article class="media">
+              <div class="media-thumb" aria-hidden="true">📢</div>
+              <div class="media-body">
+                <h3>Library hours this week</h3>
+                <p>
+                  The main library stays open until 22:00 from Monday to
+                  Thursday. Bring your student card for late entry.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- User / profile: avatar + name + actions -->
+          <section aria-labelledby="tutor-heading">
+            <h2 id="tutor-heading">Course tutor</h2>
+            <article class="profile">
+              <div class="profile-person">
+                <span class="avatar" aria-hidden="true">AM</span>
+                <div class="profile-meta">
+                  <h3>Alex Morgan</h3>
+                  <p>Web Markup · Room B204</p>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary">Message</button>
+                <button type="button" class="btn">Office hours</button>
+              </div>
+            </article>
+          </section>
+
+          <!-- Chat / message items: avatar + content + timestamp -->
+          <section aria-labelledby="chat-heading">
+            <h2 id="chat-heading">Study group chat</h2>
+            <ul class="chat-list">
+              <li class="chat-item">
+                <span class="avatar avatar-sm" aria-hidden="true">SK</span>
+                <div class="chat-body">
+                  <p class="chat-name">Sam K.</p>
+                  <p>Does anyone have notes from the Flexbox lecture?</p>
+                </div>
+                <time datetime="2026-09-21T09:12">09:12</time>
+              </li>
+              <li class="chat-item">
+                <span class="avatar avatar-sm" aria-hidden="true">LR</span>
+                <div class="chat-body">
+                  <p class="chat-name">Lee R.</p>
+                  <p>Yes — start with display: flex and then add gap.</p>
+                </div>
+                <time datetime="2026-09-21T09:14">09:14</time>
+              </li>
+              <li class="chat-item">
+                <span class="avatar avatar-sm" aria-hidden="true">JD</span>
+                <div class="chat-body">
+                  <p class="chat-name">You</p>
+                  <p>Thanks! I will try justify-content next.</p>
+                </div>
+                <time datetime="2026-09-21T09:16">09:16</time>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Form rows: label + input, plus grouped controls -->
+          <section aria-labelledby="form-heading">
+            <h2 id="form-heading">Ask a question</h2>
+            <form class="question-form" action="#" method="get">
+              <div class="form-row">
+                <label for="topic">Topic</label>
+                <input id="topic" name="topic" type="text" value="Flexbox alignment" />
+              </div>
+              <div class="form-row form-row-split">
+                <div class="form-field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" value="Jordan Diaz" />
+                </div>
+                <div class="form-field">
+                  <label for="group">Group</label>
+                  <select id="group" name="group">
+                    <option>Year 1A</option>
+                    <option>Year 1B</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row form-row-top">
+                <label for="message">Question</label>
+                <textarea id="message" name="message" rows="3">How do I center a button group?</textarea>
+              </div>
+              <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Send question</button>
+                <button type="reset" class="btn">Clear</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Pagination: page-number buttons in a row -->
+          <nav class="pagination" aria-label="Course list pages">
+            <button type="button" class="page-btn">Prev</button>
+            <button type="button" class="page-btn is-current" aria-current="page">1</button>
+            <button type="button" class="page-btn">2</button>
+            <button type="button" class="page-btn">3</button>
+            <button type="button" class="page-btn">Next</button>
+          </nav>
+        </main>
+      </div>
+    </div>
+
+    <!-- Footer: columns of links, then social icons + copyright -->
+    <footer class="site-footer">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h2>Campus</h2>
+          <ul>
+            <li><a href="#">Map</a></li>
+            <li><a href="#">Timetables</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>Study</h2>
+          <ul>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">Exams</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2>About</h2>
+          <ul>
+            <li><a href="#">Staff</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <ul class="social" aria-label="Social media">
+          <li><a href="#" aria-label="Campus on X">𝕏</a></li>
+          <li><a href="#" aria-label="Campus on Instagram">◎</a></li>
+          <li><a href="#" aria-label="Campus on YouTube">▶</a></li>
+        </ul>
+        <p>© 2026 Campus Hub · Flexbox teaching sample</p>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,656 @@
+/* Campus Hub — Flexbox teaching sample
+   Layouts use Flexbox only (no CSS Grid).
+   Look for display, flex-direction, justify-content, align-items, gap, flex-wrap, and flex. */
+
+:root {
+  --ink: #1c2430;
+  --muted: #5b6777;
+  --paper: #f4f6f8;
+  --card: #ffffff;
+  --line: #d5dce5;
+  --brand: #1f6f8b;
+  --brand-dark: #16586d;
+  --accent: #e8b86d;
+  --accent-2: #6bb3a8;
+  --accent-3: #c97b84;
+  --radius: 0.6rem;
+  --space: 1rem;
+  --shadow: 0 1px 3px rgba(28, 36, 48, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.4rem;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 0.75rem;
+}
+
+a {
+  color: var(--brand);
+}
+
+img {
+  max-width: 100%;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Shared buttons — a button group is a horizontal flex row */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.avatar,
+.avatar-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.avatar-sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+
+.page {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+}
+
+/* -------------------------------------------------
+   Header / navigation bar
+   Nested flex rows: logo + links + user controls
+   ------------------------------------------------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--brand);
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* -------------------------------------------------
+   Breadcrumbs: links arranged in a row
+   ------------------------------------------------- */
+.breadcrumbs {
+  margin-bottom: 1rem;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin-left: 0.35rem;
+  color: var(--line);
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------
+   Hero: text + illustration side by side
+   ------------------------------------------------- */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-text,
+.hero-art {
+  flex: 1 1 16rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+/* Mini flex row of color blocks — a tiny illustration */
+.hero-art {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+  min-height: 10rem;
+}
+
+.hero-block {
+  flex: 1;
+  border-radius: var(--radius);
+}
+
+.hero-block-a {
+  background: var(--brand);
+  flex: 1.4;
+}
+
+.hero-block-b {
+  background: var(--accent);
+}
+
+.hero-block-c {
+  background: var(--accent-2);
+  flex: 0.7;
+}
+
+/* -------------------------------------------------
+   Toolbar: controls distributed across a row
+   ------------------------------------------------- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.toolbar-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tool-btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+/* -------------------------------------------------
+   Sidebar + main: two columns in a flex row
+   ------------------------------------------------- */
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.sidebar {
+  flex: 0 1 13rem;
+  padding: 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.sidebar h2 {
+  font-size: 1rem;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.side-nav a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.4rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.side-nav a.is-active,
+.side-nav a:hover {
+  background: var(--paper);
+  color: var(--brand);
+}
+
+.side-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+main {
+  flex: 1 1 20rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+main > section {
+  padding: 1rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* -------------------------------------------------
+   Card grid: wrapping horizontal row of cards
+   Each card is a vertical flex column
+   ------------------------------------------------- */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 14rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.card-image {
+  min-height: 7rem;
+}
+
+.card-image-1 {
+  background: var(--brand);
+}
+
+.card-image-2 {
+  background: var(--accent);
+}
+
+.card-image-3 {
+  background: var(--accent-3);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+  padding: 0.85rem;
+}
+
+.card-body p {
+  flex: 1;
+  margin: 0;
+  color: var(--muted);
+}
+
+/* -------------------------------------------------
+   Media object: thumbnail + text
+   ------------------------------------------------- */
+.media {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.media-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: #f3e6c8;
+  font-size: 1.4rem;
+}
+
+.media-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* -------------------------------------------------
+   Profile: avatar + name + actions
+   ------------------------------------------------- */
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.profile-person {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-meta p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* -------------------------------------------------
+   Chat item: avatar + message + timestamp
+   ------------------------------------------------- */
+.chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.chat-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-name {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.chat-body p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.chat-item time {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* -------------------------------------------------
+   Form rows: label + input, or groups of controls
+   ------------------------------------------------- */
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+.form-row > label {
+  flex: 0 0 5.5rem;
+  font-weight: 600;
+}
+
+.form-row > input,
+.form-row > textarea,
+.form-row > select {
+  flex: 1 1 12rem;
+}
+
+.form-row-top {
+  align-items: flex-start;
+}
+
+.form-row-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.form-field {
+  display: flex;
+  flex: 1 1 12rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.form-field label {
+  flex: 0 0 4rem;
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field select {
+  flex: 1;
+}
+
+input,
+select,
+textarea {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  font: inherit;
+}
+
+/* -------------------------------------------------
+   Pagination: page-number buttons in a row
+   ------------------------------------------------- */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.page-btn {
+  min-width: 2.4rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  background: var(--card);
+  font: inherit;
+  cursor: pointer;
+}
+
+.page-btn.is-current {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+
+/* -------------------------------------------------
+   Footer: columns of links, then social + copyright
+   ------------------------------------------------- */
+.site-footer {
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  background: #163544;
+  color: #e7eef2;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 70rem;
+  margin: 0 auto 1.25rem;
+}
+
+.footer-col {
+  flex: 1 1 10rem;
+}
+
+.footer-col h2 {
+  font-size: 1rem;
+}
+
+.footer-col a {
+  color: #c5d6de;
+  text-decoration: none;
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #c5d6de;
+  font-size: 0.9rem;
+}
+
+.social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Simple wrap for very small screens */
+@media (max-width: 40rem) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-row > label,
+  .form-field {
+    flex-basis: 100%;
+  }
+
+  .form-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

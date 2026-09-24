@@ -1,8 +1,41 @@
-/* add all items from grading group 3 and 4. Search for items in group 5 that refer to css f.e. z index */
-body {
-  background-color: yellow;
+
+* {
+  box-sizing: border-box;
 }
 
-p {
-  color: magenta;
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.basic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* auto-rows will make the number of rows needed to fit the content */  
+  grid-auto-rows: 1fr;
+  gap: 10px;
+  background-color: #eee;
+}
+
+.basic-grid article {
+  background-color: #ddd;
+  padding: 10px;
+}
+
+@media (min-width: 576px) {
+  
+}
+
+@media (max-width: 768px) {
+  
+}
+
+@media (max-width: 960px) {
+  
+}
+
+@media (max-width: 1140px) {
+  
 }

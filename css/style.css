@@ -1,41 +1,145 @@
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  font-family: "IBM Plex Serif", serif;
 }
 
-.basic-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  /* auto-rows will make the number of rows needed to fit the content */  
-  grid-auto-rows: 1fr;
-  gap: 10px;
-  background-color: #eee;
+p {
+  font-size: 1rem;
 }
 
-.basic-grid article {
-  background-color: #ddd;
-  padding: 10px;
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.125rem;
 }
 
 @media (min-width: 576px) {
-  
+  h1 {
+    font-size: 2.625rem;
+  }
+
+  h2 {
+    font-size: 2.125rem;
+  }
+
+  h3 {
+    font-size: 1.875rem;
+  }
+
+  h4 {
+    font-size: 1.625rem;
+  }
+
+  h5 {
+    font-size: 1.375rem;
+  }
+
+  h6 {
+    font-size: 1.25rem;
+  }
 }
 
-@media (max-width: 768px) {
-  
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.75rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+  }
+
+  h6 {
+    font-size: 1.375rem;
+  }
 }
 
-@media (max-width: 960px) {
-  
+@media (min-width: 960px) {
+  h1 {
+    font-size: 2.875rem;
+  }
+
+  h2 {
+    font-size: 2.375rem;
+  }
+
+  h3 {
+    font-size: 2.125rem;
+  }
+
+  h4 {
+    font-size: 1.875rem;
+  }
+
+  h5 {
+    font-size: 1.625rem;
+  }
+
+  h6 {
+    font-size: 1.5rem;
+  }
 }
 
-@media (max-width: 1140px) {
-  
+@media (min-width: 1140px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 2.25rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+  }
+
+  h5 {
+    font-size: 1.75rem;
+  }
+
+  h6 {
+    font-size: 1.625rem;
+  }
 }

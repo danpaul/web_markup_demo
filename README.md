@@ -7,7 +7,7 @@
 - Open style.css, view the media queries and apply your changes.
 - Is it mobile first?
 
-## It’s-a Me, Mario! 
+## It’s-a Me, Mario!
 
 - After you have finished fixing the responsiveness of the grid, move onto this exercise.
 - View the mario.html file in your browser.

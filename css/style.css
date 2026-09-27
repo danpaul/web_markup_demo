@@ -1,35 +1,24 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.basic-grid {
+section {
+  width: 800px;
+  height: 800px;
+  border: solid red 5px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  /* auto-rows will make the number of rows needed to fit the content */
-  grid-auto-rows: 1fr;
-  gap: 10px;
-  background-color: #eee;
+  grid-template-columns: auto auto auto;
 }
 
-.basic-grid article {
-  background-color: #ddd;
-  padding: 10px;
+article {
+  background-color: lightblue;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  width: 80px;
+  height: 80px;
 }
-
-.basic-grid img {
-  display: block;
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 8px;
-}
-
-/* standard breakpoints: 576px, 768px, 960px, 1140px */
-/* add media queries for each breakpoint and adjust the grid layout accordingly */
-/* keep it mobile-first! */

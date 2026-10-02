@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sonic the Hedgehog">
+  <!-- stylized original Sonic-inspired sprite for the race quiz -->
+  <ellipse cx="32" cy="58" rx="14" ry="3" fill="#000" opacity=".18"/>
+  <!-- back spikes -->
+  <path d="M18 22c-6-8-2-16 4-18 2 6 4 10 4 14-4 0-6 2-8 4z" fill="#0b4ea2"/>
+  <path d="M24 14c-2-10 6-14 12-12 0 7-1 12-2 16-4-2-7-2-10-4z" fill="#0b4ea2"/>
+  <path d="M34 12c2-10 12-12 16-6-4 5-7 9-8 14-4-1-6-3-8-8z" fill="#0b4ea2"/>
+  <!-- head -->
+  <ellipse cx="34" cy="28" rx="14" ry="13" fill="#1b6fd6"/>
+  <!-- belly / muzzle -->
+  <ellipse cx="38" cy="32" rx="9" ry="8" fill="#f4c9a3"/>
+  <ellipse cx="40" cy="34" rx="5" ry="3.5" fill="#f7d9bd"/>
+  <!-- eyes -->
+  <ellipse cx="36" cy="26" rx="4.2" ry="5.2" fill="#fff"/>
+  <ellipse cx="43" cy="26" rx="3.6" ry="4.6" fill="#fff"/>
+  <circle cx="37.5" cy="27" r="1.6" fill="#1a1a1a"/>
+  <circle cx="44.2" cy="27" r="1.4" fill="#1a1a1a"/>
+  <!-- nose -->
+  <ellipse cx="47" cy="31" rx="2.2" ry="1.5" fill="#1a1a1a"/>
+  <!-- smile -->
+  <path d="M40 36c2 2 6 2 8 0" fill="none" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- ear -->
+  <path d="M28 16l2-8 5 6z" fill="#1b6fd6"/>
+  <path d="M29 15l1.5-5 3 4z" fill="#f4c9a3"/>
+  <!-- body -->
+  <ellipse cx="28" cy="44" rx="9" ry="10" fill="#1b6fd6"/>
+  <ellipse cx="30" cy="46" rx="6" ry="7" fill="#f4c9a3"/>
+  <!-- arms -->
+  <path d="M22 40c-6 2-8 8-6 10 3-1 6-3 8-6z" fill="#1b6fd6"/>
+  <circle cx="15" cy="50" r="3.2" fill="#f4c9a3"/>
+  <path d="M34 40c5-1 9 2 10 5-3 1-6 1-9 0z" fill="#1b6fd6"/>
+  <circle cx="45" cy="46" r="3" fill="#f4c9a3"/>
+  <!-- legs / shoes -->
+  <path d="M24 52c-1 4 0 6 3 6h4c1-3 1-6 0-8z" fill="#1b6fd6"/>
+  <path d="M32 52c1 4 2 6 5 6h3c0-3-1-6-2-8z" fill="#1b6fd6"/>
+  <path d="M22 57h10l2 3H21z" fill="#e52521"/>
+  <path d="M34 57h10l1 3H33z" fill="#e52521"/>
+  <rect x="22" y="56" width="10" height="2" rx="1" fill="#fff"/>
+  <rect x="34" y="56" width="10" height="2" rx="1" fill="#fff"/>
+  <!-- white glove stripe hint -->
+  <rect x="12" y="48" width="6" height="2" rx="1" fill="#fff"/>
+  <rect x="42" y="44" width="6" height="2" rx="1" fill="#fff"/>
+</svg>

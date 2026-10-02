@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation Example</title>
+  </head>
+  <body>
+    <h1>Form Validation Example</h1>
+    <p>
+      This form uses built-in HTML5 validation. Try submitting with empty or
+      invalid values to see the browser messages.
+    </p>
+
+    <form action="/" method="get">
+      <p>
+        <label for="name">Name (required, min 2 characters):</label><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          minlength="2"
+          maxlength="50"
+          placeholder="Jane Doe"
+        />
+      </p>
+
+      <p>
+        <label for="email">Email (required, must be a valid email):</label><br />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="jane@example.com"
+        />
+      </p>
+
+      <p>
+        <label for="age">Age (required, between 18 and 120):</label><br />
+        <input
+          type="number"
+          id="age"
+          name="age"
+          required
+          min="18"
+          max="120"
+        />
+      </p>
+
+      <p>
+        <label for="phone">Phone (optional, Dutch format 06xxxxxxxx):</label><br />
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="06[0-9]{8}"
+          placeholder="0612345678"
+          title="Enter a Dutch mobile number like 0612345678"
+        />
+      </p>
+
+      <p>
+        <label for="website">Website (optional, must be a URL):</label><br />
+        <input
+          type="url"
+          id="website"
+          name="website"
+          placeholder="https://example.com"
+        />
+      </p>
+
+      <p>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </p>
+    </form>
+  </body>
+</html>

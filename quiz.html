@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Forms Race Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=IBM+Plex+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/quiz.css" />
+  </head>
+  <body class="quiz-page">
+    <header>
+      <p class="quiz-brand">Forms Race Quiz</p>
+      <p class="lede">
+        Beat the clock by inspecting the demo form on
+        <a href="index.html" target="_blank" rel="noopener">index.html</a>.
+      </p>
+    </header>
+
+    <div id="countdown-overlay" class="countdown-overlay" aria-live="assertive">
+      <span id="countdown-number" class="countdown-number">3</span>
+    </div>
+
+    <section id="screen-start" class="screen active panel" aria-labelledby="start-title">
+      <h1 id="start-title">Ready to race?</h1>
+      <ol class="howto">
+        <li>Open <a href="index.html" target="_blank" rel="noopener">index.html</a> in another tab.</li>
+        <li>Use your browser inspector (F12 / right-click → Inspect) to read attributes on the form.</li>
+        <li>Answer 10 questions before the timer hits zero. Each correct answer moves you closer to the finish.</li>
+        <li>Wrong answers explain why that option is incorrect — then try again.</li>
+      </ol>
+      <button type="button" id="start-btn">Start race</button>
+    </section>
+
+    <section id="screen-race" class="screen" aria-labelledby="race-title">
+      <h1 id="race-title" class="visually-hidden">Race in progress</h1>
+      <div class="hud panel" style="margin-bottom: 1rem">
+        <div>
+          Lap <span id="lap-label">1</span> / 10
+        </div>
+        <div class="timer" id="timer">5:00</div>
+      </div>
+
+      <div class="track" aria-hidden="true">
+        <div class="finish-flag"></div>
+        <div class="racer" id="racer" style="left: 0%">
+          <img src="img/sonic.svg" alt="Sonic racing" />
+        </div>
+      </div>
+
+      <form id="quiz-form" class="panel" novalidate>
+        <div class="question-meta">
+          <span id="question-counter">Question 1 of 10</span>
+          <span id="attempts-label">Attempts on this lap: 0</span>
+        </div>
+        <p class="question-text" id="question-text"></p>
+        <fieldset class="options" id="options"></fieldset>
+        <div class="actions">
+          <button type="submit" id="submit-btn">Lock in answer</button>
+          <a class="button-link secondary" href="index.html" target="_blank" rel="noopener">Open form page</a>
+        </div>
+        <div id="feedback" class="feedback" role="status"></div>
+      </form>
+    </section>
+
+    <section id="screen-results" class="screen panel" aria-labelledby="results-title">
+      <h1 id="results-title">Race finished!</h1>
+      <img class="celebrate" src="img/sonic.svg" alt="Sonic the Hedgehog" />
+      <p class="results-stat" id="results-stat"></p>
+      <p id="results-detail"></p>
+      <div class="actions">
+        <button type="button" id="retry-btn">Race again</button>
+        <a class="button-link secondary" href="index.html">Back to form demo</a>
+      </div>
+    </section>
+
+    <script>
+      const RACE_SECONDS = 300;
+
+      const questions = [
+        {
+          prompt: "On the forms page, what is the form element's method attribute? Inspect the opening form tag.",
+          options: [
+            { value: "get", correct: true },
+            {
+              value: "post",
+              correct: false,
+              why: "post is the method people usually expect, and the comment above the form mentions it, but that word is not the method attribute. Inspect the opening form tag.",
+            },
+            {
+              value: "put",
+              correct: false,
+              why: "put is not a method an HTML form can use. Inspect the method attribute on the form element.",
+            },
+            {
+              value: "There is no method attribute",
+              correct: false,
+              why: "The opening form tag does include a method attribute. Select that tag in the inspector and read it.",
+            },
+          ],
+        },
+        {
+          prompt: "What is the form element's action attribute?",
+          options: [
+            { value: "/", correct: true },
+            {
+              value: "/submit",
+              correct: false,
+              why: "There is a submit button, but the form does not send its data to /submit. Read the action attribute on the form tag.",
+            },
+            {
+              value: "index.html",
+              correct: false,
+              why: "The file is named index.html, but that filename is not the action. Inspect the action attribute.",
+            },
+            {
+              value: "#form-output",
+              correct: false,
+              why: "form-output is the id of the element that displays submitted data. It is not the form's action.",
+            },
+          ],
+        },
+        {
+          prompt: "What is the name attribute of the Full name text input?",
+          options: [
+            { value: "name", correct: true },
+            {
+              value: "fullname",
+              correct: false,
+              why: "The label says Full name, but the name attribute is not those two words joined together. Inspect the text input.",
+            },
+            {
+              value: "full-name",
+              correct: false,
+              why: "The label is two words, but the name attribute is not a hyphenated version of that label. Check the input in the inspector.",
+            },
+            {
+              value: "user",
+              correct: false,
+              why: "Nothing on this control calls it a user field. Look at the name attribute on the text input.",
+            },
+          ],
+        },
+        {
+          prompt: "What is the max attribute on the Age number input?",
+          options: [
+            { value: "120", correct: true },
+            {
+              value: "100",
+              correct: false,
+              why: "100 is the max on the volume range input, not on the age field. Inspect the number input's max attribute.",
+            },
+            {
+              value: "99",
+              correct: false,
+              why: "The age field does not cap the value at 99. Find the max attribute on the age input.",
+            },
+            {
+              value: "There is no max attribute",
+              correct: false,
+              why: "The age input does set a maximum. Open it in the inspector and read the max attribute.",
+            },
+          ],
+        },
+        {
+          prompt: "The checkbox labeled JavaScript has a value attribute that differs from its label. What is that value?",
+          options: [
+            { value: "js", correct: true },
+            {
+              value: "javascript",
+              correct: false,
+              why: "The visible label is the full word JavaScript, but the value attribute is not that word in lowercase. Inspect the checkbox input.",
+            },
+            {
+              value: "JavaScript",
+              correct: false,
+              why: "That matches the visible label, including the capital J. The value attribute is different. Inspect the input.",
+            },
+            {
+              value: "script",
+              correct: false,
+              why: "script is not the value. Check the value attribute on the JavaScript checkbox.",
+            },
+          ],
+        },
+        {
+          prompt: "What is the value attribute of the Favorite color input?",
+          options: [
+            { value: "#336699", correct: true },
+            {
+              value: "#ff0000",
+              correct: false,
+              why: "The paragraph uses #ff0000 as an example of a hex color. That example is not the input's value attribute. Inspect the color input.",
+            },
+            {
+              value: "#000000",
+              correct: false,
+              why: "A color input often defaults to black when no value is set, but this one has a value attribute. Read that attribute.",
+            },
+            {
+              value: "#ffffff",
+              correct: false,
+              why: "The input is not set to white. Check the value attribute on the color input.",
+            },
+          ],
+        },
+        {
+          prompt: "What is the value attribute of the Volume range input?",
+          options: [
+            { value: "50", correct: true },
+            {
+              value: "0",
+              correct: false,
+              why: "0 is the min attribute, not the current value. Inspect the value attribute on the range input.",
+            },
+            {
+              value: "100",
+              correct: false,
+              why: "100 is the max, and the label mentions 0-100. The value attribute is a different number. Inspect the range input.",
+            },
+            {
+              value: "25",
+              correct: false,
+              why: "25 is not set on this input. Read the value attribute on the volume range.",
+            },
+          ],
+        },
+        {
+          prompt: "What is the exact accept attribute on the resume file input?",
+          options: [
+            { value: ".pdf,.doc,.docx", correct: true },
+            {
+              value: ".pdf",
+              correct: false,
+              why: "PDF is only the first extension in the list. The accept attribute allows more than one type. Read the full attribute.",
+            },
+            {
+              value: ".png,.jpg,.gif",
+              correct: false,
+              why: "Those are image types. This control is for a resume. Inspect the accept attribute on the file input.",
+            },
+            {
+              value: ".pdf,.docx",
+              correct: false,
+              why: "Both of those extensions appear, but the attribute also includes another one between them. Read the full accept value.",
+            },
+          ],
+        },
+        {
+          prompt: "In the level radio group, one input has the checked attribute. What is that input's value attribute?",
+          options: [
+            { value: "beginner", correct: true },
+            {
+              value: "Beginner",
+              correct: false,
+              why: "Beginner is the visible label text. The value attribute is not capitalized the same way. Inspect the radio that has the checked attribute.",
+            },
+            {
+              value: "intermediate",
+              correct: false,
+              why: "Intermediate is one of the options, but that input does not have the checked attribute. Find the checked radio and read its value.",
+            },
+            {
+              value: "advanced",
+              correct: false,
+              why: "Advanced is in the group, but it is not the one marked checked. Inspect which radio has the checked attribute.",
+            },
+          ],
+        },
+        {
+          prompt: "A hidden input is not shown on the page. Its name is form-id. What is its value attribute?",
+          options: [
+            { value: "lecture-demo-001", correct: true },
+            {
+              value: "form-id",
+              correct: false,
+              why: "form-id is the name attribute, not the value. In the inspector, read the value attribute on that hidden input.",
+            },
+            {
+              value: "hidden",
+              correct: false,
+              why: "hidden is the type attribute. The value is a different string. Inspect the value attribute.",
+            },
+            {
+              value: "lecture-demo",
+              correct: false,
+              why: "The value starts that way, but it does not stop there. Read the entire value attribute.",
+            },
+          ],
+        },
+      ];
+
+      const screens = {
+        start: document.getElementById("screen-start"),
+        race: document.getElementById("screen-race"),
+        results: document.getElementById("screen-results"),
+      };
+
+      const els = {
+        startBtn: document.getElementById("start-btn"),
+        retryBtn: document.getElementById("retry-btn"),
+        overlay: document.getElementById("countdown-overlay"),
+        countdownNumber: document.getElementById("countdown-number"),
+        timer: document.getElementById("timer"),
+        form: document.getElementById("quiz-form"),
+        questionText: document.getElementById("question-text"),
+        options: document.getElementById("options"),
+        questionCounter: document.getElementById("question-counter"),
+        attemptsLabel: document.getElementById("attempts-label"),
+        lapLabel: document.getElementById("lap-label"),
+        feedback: document.getElementById("feedback"),
+        racer: document.getElementById("racer"),
+        resultsStat: document.getElementById("results-stat"),
+        resultsDetail: document.getElementById("results-detail"),
+        submitBtn: document.getElementById("submit-btn"),
+      };
+
+      let state = createState();
+      let tickId = null;
+
+      function createState() {
+        return {
+          index: 0,
+          attemptsOnQuestion: 0,
+          totalWrong: 0,
+          secondsLeft: RACE_SECONDS,
+          running: false,
+          finished: false,
+        };
+      }
+
+      function showScreen(name) {
+        Object.values(screens).forEach((el) => el.classList.remove("active"));
+        screens[name].classList.add("active");
+      }
+
+      function formatTime(totalSeconds) {
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+        return m + ":" + String(s).padStart(2, "0");
+      }
+
+      function updateTimerDisplay() {
+        els.timer.textContent = formatTime(state.secondsLeft);
+        els.timer.classList.toggle("urgent", state.secondsLeft <= 30 && state.running);
+      }
+
+      function updateRacer() {
+        const progress = (state.index / questions.length) * 100;
+        const capped = Math.min(progress, 92);
+        els.racer.style.left = capped + "%";
+      }
+
+      function shuffle(array) {
+        const copy = array.slice();
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function renderQuestion() {
+        const q = questions[state.index];
+        const n = state.index + 1;
+
+        els.questionCounter.textContent = "Question " + n + " of " + questions.length;
+        els.lapLabel.textContent = String(n);
+        els.attemptsLabel.textContent = "Attempts on this lap: " + state.attemptsOnQuestion;
+        els.questionText.textContent = q.prompt;
+        els.feedback.className = "feedback";
+        els.feedback.textContent = "";
+        els.submitBtn.disabled = false;
+
+        const legend = document.createElement("legend");
+        legend.textContent = "Choose one answer";
+
+        els.options.replaceChildren(legend);
+
+        shuffle(q.options).forEach((opt, i) => {
+          const id = "opt-" + state.index + "-" + i;
+          const label = document.createElement("label");
+          label.className = "option";
+          label.htmlFor = id;
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = "answer";
+          input.id = id;
+          input.value = opt.value;
+          input.required = true;
+
+          const span = document.createElement("span");
+          span.textContent = opt.value;
+
+          label.append(input, span);
+          els.options.append(label);
+        });
+
+        updateRacer();
+      }
+
+      function stopTimer() {
+        if (tickId) {
+          clearInterval(tickId);
+          tickId = null;
+        }
+        state.running = false;
+        updateTimerDisplay();
+      }
+
+      function startTimer() {
+        stopTimer();
+        state.running = true;
+        updateTimerDisplay();
+        tickId = setInterval(() => {
+          state.secondsLeft -= 1;
+          updateTimerDisplay();
+          if (state.secondsLeft <= 0) {
+            finishRace(false);
+          }
+        }, 1000);
+      }
+
+      function runCountdown(done) {
+        const sequence = ["3", "2", "1", "GO!"];
+        let i = 0;
+        els.overlay.classList.add("active");
+        els.countdownNumber.textContent = sequence[0];
+
+        const step = () => {
+          i += 1;
+          if (i >= sequence.length) {
+            els.overlay.classList.remove("active");
+            done();
+            return;
+          }
+          els.countdownNumber.textContent = sequence[i];
+          // restart CSS animation
+          els.countdownNumber.style.animation = "none";
+          void els.countdownNumber.offsetWidth;
+          els.countdownNumber.style.animation = "";
+          setTimeout(step, 700);
+        };
+
+        setTimeout(step, 700);
+      }
+
+      function beginRace() {
+        state = createState();
+        showScreen("race");
+        renderQuestion();
+        els.submitBtn.disabled = true;
+        runCountdown(() => {
+          if (state.finished) return;
+          els.submitBtn.disabled = false;
+          startTimer();
+        });
+      }
+
+      function finishRace(completed) {
+        if (state.finished) return;
+        state.finished = true;
+        stopTimer();
+
+        const used = RACE_SECONDS - Math.max(state.secondsLeft, 0);
+        const answered = completed ? questions.length : state.index;
+
+        if (completed) {
+          els.racer.style.left = "92%";
+          els.resultsStat.textContent = "You finished!";
+          els.resultsDetail.textContent =
+            "Time: " +
+            formatTime(used) +
+            ". Correct checkpoints: " +
+            questions.length +
+            "/" +
+            questions.length +
+            ". Wrong attempts along the way: " +
+            state.totalWrong +
+            ".";
+        } else {
+          els.resultsStat.textContent = "Time’s up!";
+          els.resultsDetail.textContent =
+            "You reached question " +
+            (state.index + 1) +
+            " of " +
+            questions.length +
+            " (" +
+            answered +
+            " checkpoints cleared). Wrong attempts: " +
+            state.totalWrong +
+            ". Open index.html, inspect again, and race once more.";
+        }
+
+        showScreen("results");
+      }
+
+      els.startBtn.addEventListener("click", beginRace);
+      els.retryBtn.addEventListener("click", beginRace);
+
+      els.form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!state.running || state.finished) return;
+
+        const selected = els.form.elements.namedItem("answer");
+        const choice = selected instanceof RadioNodeList
+          ? Array.from(selected).find((el) => el.checked)
+          : selected && selected.checked
+            ? selected
+            : null;
+
+        if (!choice) {
+          els.feedback.className = "feedback show wrong";
+          els.feedback.textContent = "Pick an option before locking in.";
+          return;
+        }
+
+        state.attemptsOnQuestion += 1;
+        els.attemptsLabel.textContent = "Attempts on this lap: " + state.attemptsOnQuestion;
+
+        const option = questions[state.index].options.find((item) => item.value === choice.value);
+
+        if (option && option.correct) {
+          els.feedback.className = "feedback show correct";
+          els.feedback.textContent = "Correct. Checkpoint cleared — keep racing.";
+          els.submitBtn.disabled = true;
+
+          setTimeout(() => {
+            if (state.finished) return;
+            state.index += 1;
+            state.attemptsOnQuestion = 0;
+            if (state.index >= questions.length) {
+              finishRace(true);
+            } else {
+              renderQuestion();
+            }
+          }, 650);
+          return;
+        }
+
+        state.totalWrong += 1;
+        els.feedback.className = "feedback show wrong";
+        els.feedback.textContent =
+          choice.value + " is incorrect. " + (option && option.why ? option.why : "That choice does not match the form markup.");
+        choice.checked = false;
+      });
+    </script>
+  </body>
+</html>

@@ -1,14 +1,342 @@
-<!-- add all items from grading group 1 and 2. Search for items in group 5 that refer to css f.e. author attribute value-->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web Markup Starter</title>
+    <title>HTML Forms — All Input Types</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <p>Hello web markup!</p>
-    <img src="img/banana-dance.gif" alt="banana dance" />
+    <h1>HTML Forms: All Input Types</h1>
+    <p>
+      This page demonstrates every
+      <a href="https://www.w3schools.com/html/html_form_input_types.asp" target="_blank" rel="noopener"
+        >HTML input type</a
+      >
+      for first-year IT students. Each field includes a short description and a link to the W3Schools documentation.
+    </p>
+
+    <!-- we are using get request method. normally we would use post request method. -->
+    <form action="/" method="get">
+      <!-- text -->
+      <fieldset>
+        <legend>text</legend>
+        <p>
+          Single-line text field for general text input.
+          <a href="https://www.w3schools.com/tags/att_input_type_text.asp" target="_blank" rel="noopener"
+            >W3Schools: type="text"</a
+          >
+        </p>
+        <label for="name">Full name:</label>
+        <input type="text" id="name" name="name" placeholder="Jane Doe" />
+      </fieldset>
+
+      <!-- password -->
+      <fieldset>
+        <legend>password</legend>
+        <p>
+          Masks characters as they are typed; use for secrets like passwords.
+          <a href="https://www.w3schools.com/tags/att_input_type_password.asp" target="_blank" rel="noopener"
+            >W3Schools: type="password"</a
+          >
+        </p>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+      </fieldset>
+
+      <!-- email -->
+      <fieldset>
+        <legend>email</legend>
+        <p>
+          Optimized for email addresses; browsers can validate the format.
+          <a href="https://www.w3schools.com/tags/att_input_type_email.asp" target="_blank" rel="noopener"
+            >W3Schools: type="email"</a
+          >
+        </p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" />
+      </fieldset>
+
+      <!-- number -->
+      <fieldset>
+        <legend>number</legend>
+        <p>
+          Numeric input with optional min, max, and step; often shows spinner controls.
+          <a href="https://www.w3schools.com/tags/att_input_type_number.asp" target="_blank" rel="noopener"
+            >W3Schools: type="number"</a
+          >
+        </p>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120" step="1" />
+      </fieldset>
+
+      <!-- tel -->
+      <fieldset>
+        <legend>tel</legend>
+        <p>
+          For telephone numbers; on mobile devices it often opens a phone keypad.
+          <a href="https://www.w3schools.com/tags/att_input_type_tel.asp" target="_blank" rel="noopener"
+            >W3Schools: type="tel"</a
+          >
+        </p>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+31 6 12345678" />
+      </fieldset>
+
+      <!-- url -->
+      <fieldset>
+        <legend>url</legend>
+        <p>
+          For web addresses; browsers can check that the value looks like a URL.
+          <a href="https://www.w3schools.com/tags/att_input_type_url.asp" target="_blank" rel="noopener"
+            >W3Schools: type="url"</a
+          >
+        </p>
+        <label for="website">Website:</label>
+        <input type="url" id="website" name="website" placeholder="https://example.com" />
+      </fieldset>
+
+      <!-- search -->
+      <fieldset>
+        <legend>search</legend>
+        <p>
+          Styled as a search field; some browsers add a clear (×) button.
+          <a href="https://www.w3schools.com/tags/att_input_type_search.asp" target="_blank" rel="noopener"
+            >W3Schools: type="search"</a
+          >
+        </p>
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" placeholder="Search topics…" />
+      </fieldset>
+
+      <!-- date -->
+      <fieldset>
+        <legend>date</legend>
+        <p>
+          Date picker for year, month, and day (no time).
+          <a href="https://www.w3schools.com/tags/att_input_type_date.asp" target="_blank" rel="noopener"
+            >W3Schools: type="date"</a
+          >
+        </p>
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" />
+      </fieldset>
+
+      <!-- time -->
+      <fieldset>
+        <legend>time</legend>
+        <p>
+          Time picker for hours and minutes (and sometimes seconds).
+          <a href="https://www.w3schools.com/tags/att_input_type_time.asp" target="_blank" rel="noopener"
+            >W3Schools: type="time"</a
+          >
+        </p>
+        <label for="appointment">Appointment time:</label>
+        <input type="time" id="appointment" name="appointment" />
+      </fieldset>
+
+      <!-- datetime-local -->
+      <fieldset>
+        <legend>datetime-local</legend>
+        <p>
+          Combined date and time picker without a time zone.
+          <a href="https://www.w3schools.com/tags/att_input_type_datetime-local.asp" target="_blank" rel="noopener"
+            >W3Schools: type="datetime-local"</a
+          >
+        </p>
+        <label for="meeting">Meeting:</label>
+        <input type="datetime-local" id="meeting" name="meeting" />
+      </fieldset>
+
+      <!-- month -->
+      <fieldset>
+        <legend>month</legend>
+        <p>
+          Selects a month and year only (no specific day).
+          <a href="https://www.w3schools.com/tags/att_input_type_month.asp" target="_blank" rel="noopener"
+            >W3Schools: type="month"</a
+          >
+        </p>
+        <label for="start-month">Start month:</label>
+        <input type="month" id="start-month" name="start-month" />
+      </fieldset>
+
+      <!-- week -->
+      <fieldset>
+        <legend>week</legend>
+        <p>
+          Selects a week number within a year.
+          <a href="https://www.w3schools.com/tags/att_input_type_week.asp" target="_blank" rel="noopener"
+            >W3Schools: type="week"</a
+          >
+        </p>
+        <label for="week">Week:</label>
+        <input type="week" id="week" name="week" />
+      </fieldset>
+
+      <!-- color -->
+      <fieldset>
+        <legend>color</legend>
+        <p>
+          Opens a color picker; value is a hex color such as <code>#ff0000</code>.
+          <a href="https://www.w3schools.com/tags/att_input_type_color.asp" target="_blank" rel="noopener"
+            >W3Schools: type="color"</a
+          >
+        </p>
+        <label for="favorite-color">Favorite color:</label>
+        <input type="color" id="favorite-color" name="favorite-color" value="#336699" />
+      </fieldset>
+
+      <!-- range -->
+      <fieldset>
+        <legend>range</legend>
+        <p>
+          Slider control for a numeric value within a range.
+          <a href="https://www.w3schools.com/tags/att_input_type_range.asp" target="_blank" rel="noopener"
+            >W3Schools: type="range"</a
+          >
+        </p>
+        <label for="volume">Volume (0–100):</label>
+        <input type="range" id="volume" name="volume" min="0" max="100" value="50" />
+      </fieldset>
+
+      <!-- file -->
+      <fieldset>
+        <legend>file</legend>
+        <p>
+          Lets the user choose one or more files from their device.
+          <a href="https://www.w3schools.com/tags/att_input_type_file.asp" target="_blank" rel="noopener"
+            >W3Schools: type="file"</a
+          >
+        </p>
+        <label for="resume">Upload resume:</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" />
+      </fieldset>
+
+      <!-- checkbox -->
+      <fieldset>
+        <legend>checkbox</legend>
+        <p>
+          On/off choice; several checkboxes can be selected at once.
+          <a href="https://www.w3schools.com/tags/att_input_type_checkbox.asp" target="_blank" rel="noopener"
+            >W3Schools: type="checkbox"</a
+          >
+        </p>
+        <label>
+          <input type="checkbox" name="interests" value="html" />
+          HTML
+        </label>
+        <label>
+          <input type="checkbox" name="interests" value="css" />
+          CSS
+        </label>
+        <label>
+          <input type="checkbox" name="interests" value="js" />
+          JavaScript
+        </label>
+      </fieldset>
+
+      <!-- radio -->
+      <fieldset>
+        <legend>radio</legend>
+        <p>
+          Mutually exclusive options in a group that share the same <code>name</code>.
+          <a href="https://www.w3schools.com/tags/att_input_type_radio.asp" target="_blank" rel="noopener"
+            >W3Schools: type="radio"</a
+          >
+        </p>
+        <label>
+          <input type="radio" name="level" value="beginner" checked />
+          Beginner
+        </label>
+        <label>
+          <input type="radio" name="level" value="intermediate" />
+          Intermediate
+        </label>
+        <label>
+          <input type="radio" name="level" value="advanced" />
+          Advanced
+        </label>
+      </fieldset>
+
+      <!-- hidden -->
+      <fieldset>
+        <legend>hidden</legend>
+        <p>
+          Not shown on the page, but still submitted with the form (e.g. IDs or tokens).
+          <a href="https://www.w3schools.com/tags/att_input_type_hidden.asp" target="_blank" rel="noopener"
+            >W3Schools: type="hidden"</a
+          >
+        </p>
+        <input type="hidden" name="form-id" value="lecture-demo-001" />
+        <p><em>This field is invisible — inspect the page source to see it.</em></p>
+      </fieldset>
+
+      <!-- button -->
+      <fieldset>
+        <legend>button</legend>
+        <p>
+          A clickable button with no default form action (usually handled with JavaScript).
+          <a href="https://www.w3schools.com/tags/att_input_type_button.asp" target="_blank" rel="noopener"
+            >W3Schools: type="button"</a
+          >
+        </p>
+        <input type="button" value="Click me (no submit)" onclick="alert('This is type=button')" />
+      </fieldset>
+
+      <!-- reset -->
+      <fieldset>
+        <legend>reset</legend>
+        <p>
+          Resets all form fields back to their initial values.
+          <a href="https://www.w3schools.com/tags/att_input_type_reset.asp" target="_blank" rel="noopener"
+            >W3Schools: type="reset"</a
+          >
+        </p>
+        <input type="reset" value="Reset form" />
+      </fieldset>
+
+      <!-- submit -->
+      <fieldset>
+        <legend>submit</legend>
+        <p>
+          Submits the form to the URL in the form’s <code>action</code> attribute.
+          <a href="https://www.w3schools.com/tags/att_input_type_submit.asp" target="_blank" rel="noopener"
+            >W3Schools: type="submit"</a
+          >
+        </p>
+        <input type="submit" value="Submit form" />
+      </fieldset>
+    </form>
+
+    <h2>Submitted form data</h2>
+    <pre id="form-output">(submit the form to see the data here)</pre>
+
+    <hr />
+    <p>
+      Overview of all types:
+      <a href="https://www.w3schools.com/html/html_form_input_types.asp" target="_blank" rel="noopener"
+        >W3Schools — HTML Input Types</a
+      >
+    </p>
+
+    <script>
+      const form = document.querySelector("form");
+      const output = document.getElementById("form-output");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // stay on this page instead of navigating
+
+        const data = new FormData(form);
+        let text = "";
+
+        for (const [name, value] of data.entries()) {
+          // File inputs give a File object — show the file name
+          text += name + ": " + (value instanceof File ? value.name || "(no file)" : value) + "\n";
+        }
+
+        output.textContent = text || "(form was empty)";
+      });
+    </script>
   </body>
 </html>

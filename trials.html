@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Propath - Open Trials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+        }
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        header nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+        header nav ul li a.active {
+            color: #0d381e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">PROPATH</div>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="exercise.html">EXERCISE</a></li>
+                <li><a href="diet.html">DIET</a></li>
+                <li><a href="trials.html" class="active">TRAIL</a></li>
+                <li><a href="training.html">TRAINING</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" style="display: flex; align-items: center; justify-content: space-between; padding: 60px 40px; background-color: #ffffff;">
+            <div class="hero-text" style="max-width: 50%;">
+                <p style="text-transform: uppercase; font-size: 13px; font-weight: bold; color: #555; margin-bottom: 10px;">Opportunities</p>
+                <h1 style="font-size: 48px; line-height: 1.1; font-weight: 900; margin-bottom: 20px; color: #000;">OPEN TRIALS<br>TAKE YOUR<br>CHANCE</h1>
+                <p style="font-size: 15px; color: #444; margin-bottom: 30px; line-height: 1.5;">Get noticed. Show your skills. Open trials can lead to your next big opportunity.</p>
+                <a href="#upcoming-trials" class="btn" style="background-color: #0d381e; color: #fff; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block;">See upcoming trials</a>
+            </div>
+            <div class="hero-image" style="max-width: 45%;">
+                <img src="img/Screenshot 2026-11-08 170715.png" alt="Players in action during open trials" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+            </div>
+        </section>
+
+        <!-- What to Expect Section -->
+        <section id="what-to-expect" style="background-color: #eaf2ec; padding: 50px 40px;">
+            <p style="text-transform: uppercase; font-size: 12px; font-weight: bold; color: #555; margin-bottom: 5px;">Trial Day</p>
+            <h2 style="font-size: 28px; font-weight: 900; margin-bottom: 35px; color: #000;">WHAT TO EXPECT</h2>
+            <div class="expect-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
+                <div class="expect-card">
+                    <div style="background-color: #0d381e; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 12px;">1</div>
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">Arrive + Register</h3>
+                    <p style="font-size: 12px; color: #333; line-height: 1.4;">Check in 30 minutes early with your ID.</p>
+                </div>
+                <div class="expect-card">
+                    <div style="background-color: #0d381e; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 12px;">2</div>
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">Speed</h3>
+                    <p style="font-size: 12px; color: #333; line-height: 1.4;">Pace with and without the ball, and how quickly you react.</p>
+                </div>
+                <div class="expect-card">
+                    <div style="background-color: #0d381e; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 12px;">3</div>
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">Drills</h3>
+                    <p style="font-size: 12px; color: #333; line-height: 1.4;">Passing, control and movement exercises.</p>
+                </div>
+                <div class="expect-card">
+                    <div style="background-color: #0d381e; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 12px;">4</div>
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">Small-sided</h3>
+                    <p style="font-size: 12px; color: #333; line-height: 1.4;">Where most decisions are made.</p>
+                </div>
+                <div class="expect-card">
+                    <div style="background-color: #0d381e; color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 12px;">5</div>
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">Feedback</h3>
+                    <p style="font-size: 12px; color: #333; line-height: 1.4;">Ask what you can improve.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest & Upcoming Trials Section -->
+        <section id="upcoming-trials" style="background-color: #eaf2ec; padding: 20px 40px 50px 40px;">
+            <h2 style="font-size: 24px; font-weight: 900; margin-bottom: 25px; color: #000;">LATEST & UPCOMING TRIALS</h2>
+            <div class="pillars-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                <!-- Card 1 -->
+                <div class="pillar-card" style="background-color: #ffffff; padding: 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <img src="img/btv px.jpg" alt="SV Buitenveldert Logo" style="width: 90px; height: 90px; object-fit: contain; display: block; margin: 0 auto 15px auto;">
+                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">SV BUITENVELDERT</h3>
+                    <p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #555; margin-bottom: 10px;">Open Trial</p>
+                    <p style="font-size: 11px; color: #444; line-height: 1.5; margin-bottom: 20px;">Age: U19 / U21<br>Location: Amsterdam<br>Date: [date TBC]</p>
+                    <a href="contact.html" class="btn" style="background-color: #0d381e; color: #fff; padding: 8px 20px; font-size: 11px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block;">Register</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="pillar-card" style="background-color: #ffffff; padding: 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <img src="img/fc utrecht.jpg" alt="FC Utrecht Logo" style="width: 90px; height: 90px; object-fit: contain; display: block; margin: 0 auto 15px auto;">
+                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">FC UTRECHT</h3>
+                    <p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #555; margin-bottom: 10px;">Open Trial</p>
+                    <p style="font-size: 11px; color: #444; line-height: 1.5; margin-bottom: 20px;">Age: U21<br>Location: Utrecht<br>Date: Oct 25, 2026</p>
+                    <a href="contact.html" class="btn" style="background-color: #0d381e; color: #fff; padding: 8px 20px; font-size: 11px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block;">Register</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="pillar-card" style="background-color: #ffffff; padding: 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <img src="img/ajx.jpg" alt="Ajax Logo" style="width: 90px; height: 90px; object-fit: contain; display: block; margin: 0 auto 15px auto;">
+                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">AJAX</h3>
+                    <p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #555; margin-bottom: 10px;">Talent Day</p>
+                    <p style="font-size: 11px; color: #444; line-height: 1.5; margin-bottom: 20px;">Age: U16 / U17<br>Location: Amsterdam<br>Date: Nov 2, 2026</p>
+                    <a href="contact.html" class="btn" style="background-color: #0d381e; color: #fff; padding: 8px 20px; font-size: 11px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block;">Register</a>
+                </div>
+                <!-- Card 4 -->
+                <div class="pillar-card" style="background-color: #ffffff; padding: 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                    <img src="img/Designer (2).png" alt="AFC Amsterdam Logo" style="width: 90px; height: 90px; object-fit: contain; display: block; margin: 0 auto 15px auto;">
+                    <h3 style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">AFC AMSTERDAM</h3>
+                    <p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #555; margin-bottom: 10px;">Open Trial</p>
+                    <p style="font-size: 11px; color: #444; line-height: 1.5; margin-bottom: 20px;">Age: U19 / U21<br>Location: Amsterdam<br>Date: [date TBC]</p>
+                    <a href="contact.html" class="btn" style="background-color: #0d381e; color: #fff; padding: 8px 20px; font-size: 11px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block;">Register</a>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 12px; margin-top: 25px; font-weight: bold; color: #222;">Always check the club's official website for the latest date, age group and registration rules.</p>
+        </section>
+
+        <!-- Questions & Image Section -->
+        <section style="background-color: #eaf2ec; padding: 30px 40px 60px 40px; display: flex; justify-content: space-between; align-items: flex-start;">
+            <div style="width: 50%;">
+                <h2 style="font-size: 22px; font-weight: 900; margin-bottom: 20px; color: #000;">QUESTIONS</h2>
+                <div style="background-color: #ffffff; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 5px;">DO I NEED AN AGENT?</h3>
+                    <p style="font-size: 12px; color: #444; line-height: 1.4;">No. Open trials are open to anyone in the age group. Check the club's rules.</p>
+                </div>
+                <div style="background-color: #ffffff; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 5px;">WHAT IF I'M INJURED?</h3>
+                    <p style="font-size: 12px; color: #444; line-height: 1.4;">Do not attend. Tell the club and ask about another date.</p>
+                </div>
+                <div style="background-color: #ffffff; padding: 15px 20px; border-radius: 6px; margin-bottom: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <h3 style="font-size: 13px; font-weight: bold; margin-bottom: 5px;">DOES IT COST MONEY?</h3>
+                    <p style="font-size: 12px; color: #444; line-height: 1.4;">It depends on the club. Many are free, some charge a small fee. Always check before you register.</p>
+                </div>
+            </div>
+            <div style="width: 42%; text-align: right;">
+                <img src="img/Screenshot 2026-11-07 171834.png" alt="Club facility parking lot" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                <div>
+                    <a href="training.html" class="btn" style="background-color: #0d381e; color: #fff; padding: 10px 30px; font-size: 12px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block;">NEXT</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #092c17; color: #fff; padding: 40px; display: flex; justify-content: space-between;">
+        <div>
+            <p style="font-weight: 900; font-size: 18px; letter-spacing: 1px;">PROPATH</p>
+        </div>
+        <div>
+            <h4 style="font-size: 13px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Explore</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 12px; line-height: 1.8;">
+                <li><a href="homepage.html" style="color: #ccc; text-decoration: none;">Home</a></li>
+                <li><a href="exercise.html" style="color: #ccc; text-decoration: none;">Discipline</a></li>
+                <li><a href="training.html" style="color: #ccc; text-decoration: none;">Weekly Checklist</a></li>
+                <li><a href="trials.html" style="color: #ccc; text-decoration: none;">Build your plan</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="font-size: 13px; font-weight: bold; margin-bottom: 10px; text-transform: uppercase;">Contact</h4>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 5px;">Email: Propath@gmail.com</p>
+        </div>
+    </footer>
+    <div style="background-color: #06200f; color: #aaa; font-size: 11px; padding: 15px 40px; text-align: left;">
+        ©2026 [ PROPATH ]. All rights reserved.
+    </div>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner" style="z-index: 9999;">
+        <p>We use cookies to ensure you get the best experience on our website. <button onclick="document.getElementById('cookieBanner').style.display='none'">Accept</button></p>
+    </div>
+</body>
+</html>
